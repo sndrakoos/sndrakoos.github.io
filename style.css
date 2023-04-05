@@ -59,8 +59,8 @@ a:hover {
 	left: -100px;
 	top: 50%;
 	mix-blend-mode: difference;
-	-webkit-transition: all 150ms vertical;
-	transition: all 150ms vertical;
+	-webkit-transition: all 0ms vertical;
+	transition: all 0ms vertical;
 }
 .cursor{
 	background-color: #fff;
@@ -69,11 +69,11 @@ a:hover {
 	z-index: 99999;
 }
 .cursor2,.cursor3{
-	height: 32px;
-	width: 32px;
+	height: 24px;
+	width: 24px;
 	z-index:99998;
-	-webkit-transition:all 0.3s ease-out;
-	transition:all 0.3s ease-out
+	-webkit-transition:all 0.1s ease-out;
+	transition:all 0.1s ease-out
 }
 .cursor2.hover,
 .cursor3.hover{
@@ -155,7 +155,7 @@ body.contact-on .hero-section {
 	font-weight: 700;
 	color: #c4c3ca;
 	display: inline;
-	background-color: #000;
+	background-color: #00000000;
 	letter-spacing: 2px;
 	top: 50%;
 	right: 50%;
@@ -181,8 +181,8 @@ body.contact-on .hero-section {
 	background-size: 30px 30px;
 	background-image: url('http://www.ivang-design.com/svg-load/portfolio/left.svg');
 	opacity: 0.8;
-	-webkit-transition: all 50ms vertical;
-	transition: all 50ms vertical;
+	-webkit-transition: all 0ms vertical;
+	transition: all 0ms vertical;
 }
 .contact-text:hover:before {
 	opacity: 1;
