@@ -59,8 +59,8 @@
     --color-dark: #1C1D20;
     --color-dark-dark: #141517;
     --color-light: #FFFFFF;
-    --color-blue: #c78b37;
-    --color-blue-dark: #ae732e;
+    --color-blue: #77000062;
+    --color-blue-dark: #820000;
     --color-gray: #1C1D20;
     --color-lightgray: #E9EAEB;
     --color-white: #FFFFFF;
@@ -117,7 +117,7 @@ li, ul {padding: 0; margin: 0; list-style: none;}
 
 body {
     -webkit-font-smoothing: antialiased;
-    font-family: 'Dennis Sans', sans-serif;
+    font-family: 'Biome', sans-serif;
     color: var(--color-text);
     line-height: 1.6;
     font-weight: 450;
@@ -160,7 +160,7 @@ h1, h2, h3, h4, h5, h6, p, a, li, ul, ol, span, strong, em  {padding: 0; margin:
 h1:last-child, h2:last-child, h3:last-child, h4:last-child, p:last-child, p.big:last-child, p.small:last-child, a:last-child, strong:last-child  {margin-bottom: 0;}
 
 h1 {
-    font-family: 'Dennis Sans', sans-serif;
+    font-family: 'Kyoto', sans-serif;
     font-weight: 450;
     font-style: normal;
     font-size: clamp(3.25em, 7vw, 8em);
