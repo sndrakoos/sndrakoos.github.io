@@ -61,19 +61,19 @@
    width: 100%;
    top: 0;
    position: relative;
-   height: 10vh;
+   height: 5vh;
    overflow: hidden;
 }
 
 .rounded-div {
-   width: 150%;
+   width: 100%;
    content: "";
    display: block;
    position: absolute;
-   background: var(--color-white);
+   background: var(--color-dark);
    height: 750%;
    left: 50%;
-   border-radius: 50%;
+   border-radius: 100%;
    transform: translate(-50%, -86.666%);
    z-index: 1;
 }

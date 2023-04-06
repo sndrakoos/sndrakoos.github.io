@@ -56,12 +56,12 @@
 
 :root {
 
-    --color-dark: #1C1D20;
+    --color-dark: #000000;
     --color-dark-dark: #141517;
     --color-light: #FFFFFF;
     --color-blue: #77000062;
     --color-blue-dark: #820000;
-    --color-gray: #1C1D20;
+    --color-gray: #000000;
     --color-lightgray: #E9EAEB;
     --color-white: #FFFFFF;
     
