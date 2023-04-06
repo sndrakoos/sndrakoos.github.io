@@ -548,7 +548,7 @@ main.touch .main-wrap {
 
 .home-header .personal-image img {
    width: auto;
-   height: 100%;
+   height: auto;
    object-fit: cover;
    position: absolute;
    left: 50%;
