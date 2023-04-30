@@ -22,7 +22,7 @@ html, body {
 }
 
 body {
-  background-color: #181a20;
+  background-color: #000000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: flex;
@@ -67,7 +67,7 @@ img {
   position: relative;
   width: 100%;
   height: 160px;
-  background-image: url("https://cdn.discordapp.com/attachments/1095810923844882473/1101534490716799037/giphy.gif");
+  background-image: url("https://cdn.discordapp.com/attachments/1095810923844882473/1102148198451126372/tumblr_a1800cfba650cbedcf9a404313837d10_b4706039_500.gif");
   background-size: cover;
   background-position: center -40px;
   padding-top: 70px;
@@ -82,7 +82,7 @@ img {
   width: 90px;
   height: 90px;
   border-radius: 50%;
-  background-image: url("https://cdn.discordapp.com/attachments/1095810923844882473/1099383987446743070/1850-my-bloody-valentine.gif");
+  background-image: url("https://cdn.discordapp.com/attachments/1095810923844882473/1102148198014931014/4401-gamerboy-spin.gif");
   background-size: cover;
   border: 7px solid #1f2128;
 }
@@ -108,7 +108,7 @@ img {
 }
 
 .btn-all {
-  color: #6343e4;
+  color: #000000;
   margin-left: auto;
   font-size: 12px;
   font-weight: 500;
@@ -134,7 +134,7 @@ img {
 }
 
 code {
-  color: #e49343;
+  color: #b2b2b2;
   background: #23272A;
   padding: 2px;
   border-radius: 5px;
