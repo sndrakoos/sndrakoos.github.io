@@ -1,53 +1,92 @@
-<!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>sndrakoos</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" type="image/jpg" href="assets/logo.jpg"/>
-<link href="https://fonts.googleapis.com/css?family=Libre+Franklin|Montserrat:600|Playfair+Display|Roboto+Mono:500" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel="stylesheet" href="assets/style.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">         
-
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <title>sndrakoos</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1"/>
+        <link rel="shortcut icon" type="image/jpg" href="assets/logo.jpg"/>
+        <meta name="color-scheme" content="dark only"/>
+        <meta name="description" content="sndrakoos"/>
+        <meta property="og:site_name" content="sndrakoos"/>
+        <meta property="og:title" content="sndrakoos"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:description" content="sndrakoos"/>
+        <meta property="og:image" content="https://sndrakoos.hu"/>
+        <meta property="og:image:type" content="image/jpeg"/>
+        <meta property="og:image:width" content="1280"/>
+        <meta property="og:image:height" content="800"/>
+        <meta property="og:url" content="https://sndrakoos.hu"/>
+        <meta property="twitter:card" content="summary_large_image"/>
+        <link rel="canonical" href="https://sndrakoos.hu"/>
+        <link href="https://fonts.googleapis.com/css2?display=swap&family=Overpass:ital,wght@0,300;1,300&family=JetBrains+Mono:ital,wght@0,200;1,200" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="./assets/style.css">
 </head>
-<body>
-<div class="wrap">
-  <div class="back">
-    <div class="back__slide active">
-      <div class="progress"></div>
-    </div>
-    <div class="back__slide">
-      <div class="progress"></div>
-      <div class="back-front-image"></div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card__slide active">
-      <div class="image"></div><span class="number">01</span><span class="date">@sndrakoos <span class="date__time">2023</span></span>
-    </div>
-    <div class="card__slide">
-      <div class="back-image"></div>
-      <div class="image"></div><span class="number">02</span><span class="date">@sndrakoos <span class="date__time">2023</span></span>
-    </div>
-    <div class="content">
-      <div class="content__slide active">
-        <h2 class="title"> <span class="title__line"> <span class="title__inner">Sándor</span></span> <span class="title__line"> <span class="title__inner">Ákos</span></span></h2>
-        <p class="desc">Üdv, Ákos vagyok. <br/> Logisztikai ügyintézést tanulok.<br/></p>
-        <div class="button-wrap"><a class="button">Elérhetőség<span class="button__hover"></span></a></div>
-      </div>
-      <div class="content__slide">
-        <h2 class="title"><span class="title__line"><span class="title__inner">-----</span></span></h2>
-        <p class="desc">
-          ㅤ<a target=“_blank” href="https://www.paypal.me/sndrakoos"><span id="boot-icon" class="bi bi-paypal" style="font-size: 25px; -webkit-text-stroke-width: 0px; color: rgb(0, 0, 0); height: 1rem; font-size: 2em;"></span></a>
-          ㅤ<a target=“_blank” href="https://www.instagram.com/sndrakoos"><span id="boot-icon" class="bi bi-instagram" style="font-size: 25px; -webkit-text-stroke-width: 0px; color: rgb(0, 0, 0); height: 1rem; font-size: 2em;"></span></a>
-        </p>
-        <div class="button-wrap"><a class="button">vissza<span class="button__hover"></span></a></div>
-      </div>
-      <div class="content__ping content__ping--noanimation"></div>
-    </div>
-  </div>
-</div>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script><script  src="assets/script.js"></script>
-</body>
+    <body class="is-loading">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 40 40" display="none" width="0" height="0">
+            <symbol id="icon-96fc68818d10374399c6dcf28fe98f75" viewBox="0 0 40 40">
+                <path d="M34,9.6l-4.9,22.9c-0.3,1.6-1.3,2-2.7,1.2L19,28.3l-3.6,3.5c-0.3,0.4-0.7,0.8-1.5,0.8l0.4-7.6l0,0l-0.1,0 l13.9-12.4c0.7-0.6-0.1-0.8-0.9-0.3L10.2,22.9l-7.4-2.3c-1.7-0.4-1.7-1.6,0.3-2.3l28.8-11C33.2,6.7,34.5,7.6,34,9.6z"/>
+            </symbol>
+            <symbol id="icon-a945b0d299730c0b062176dbcf8ea83f" viewBox="0 0 40 40">
+                <path d="M35.1,20.2c-1.3,5.6-5.5,8.2-11.2,8.8h-0.9c-0.7,0-1.3,0.5-1.4,1.2l-0.1,0.4l-1.1,6.8l-0.1,0.3 c-0.1,0.7-0.7,1.2-1.4,1.2h-4.7L16.6,25h2.9c8,0,13-3.9,14.6-11.2C35.4,15.4,35.6,17.6,35.1,20.2z M32.3,13.1 c-1.4,7.5-6.4,10-12.8,10h-3.2c-0.8,0-1.4,0.6-1.6,1.3l0.1-0.3l-1.7,10.8H6.3c-0.6,0-1-0.5-0.9-1.1L9.9,4.7C10,4,10.7,3.4,11.5,3.4 h11c3.8,0,6.8,0.8,8.4,2.7c1.5,1.7,1.9,3.6,1.5,6.3C32.4,12.4,32.3,12.8,32.3,13.1z"/>
+            </symbol>
+            <symbol id="icon-31b8880d36499db40d4e47546c4763f3" viewBox="0 0 40 40">
+                <path d="M23.2,17.4L35.9,3h-3l-11,12.5L13.1,3H3l13.3,18.9L3,37h3l11.6-13.2L26.9,37H37L23.2,17.4z M19.1,22.1l-1.3-1.9L7.1,5.2h4.6 l8.6,12.1l1.3,1.9l11.2,15.7h-4.6L19.1,22.1z"/>
+            </symbol>
+        </svg>
+        <div id="wrapper">
+            <div id="main">
+                <div class="inner">
+                    <div id="container01" class="container columns">
+                        <div class="wrapper">
+                            <div class="inner">
+                                <div>
+                                    <p id="text01">
+                                        <code>Tanuló</code>
+                                        <code>|</code>
+                                        <code>Logisztikai ügyintézés</code>
+                                    </p>
+                                    <h1 id="text02">Sándor Ákos</h1>
+                                </div>
+                                <div>
+                                    <ul id="icons01" class="icons">
+                                        <li>
+                                            <a class="n01" href="https://t.me/sndrakoos" aria-label="Telegram">
+                                                <svg>
+                                                    <use xlink:href="#icon-96fc68818d10374399c6dcf28fe98f75"></use>
+                                                </svg>
+                                                <span class="label">Telegram</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="n02" href="https://paypal.me/sndrakoos" aria-label="PayPal">
+                                                <svg>
+                                                    <use xlink:href="#icon-a945b0d299730c0b062176dbcf8ea83f"></use>
+                                                </svg>
+                                                <span class="label">PayPal</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="n03" href="https://x.com/sndrakoos" aria-label="X">
+                                                <svg>
+                                                    <use xlink:href="#icon-31b8880d36499db40d4e47546c4763f3"></use>
+                                                </svg>
+                                                <span class="label">X</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr id="divider01" class="full screen">
+                    <div id="credits" class="icc-credits">
+                        <span>
+                            <a href="#">@sndrakoos</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="./assets/script.js"></script>
+    </body>
 </html>
