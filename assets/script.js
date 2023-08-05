@@ -803,16 +803,311 @@
             }
         },
     };
+    function timer(id, options) {
+        var _this = this, f;
+        this.id = id;
+        this.timestamp = options.timestamp;
+        this.duration = options.duration;
+        this.mode = options.mode;
+        this.precision = options.precision;
+        this.completeUrl = options.completeUrl;
+        this.completion = options.completion;
+        this.persistent = options.persistent;
+        this.labelStyle = options.labelStyle;
+        this.completed = false;
+        this.status = null;
+        this.$timer = document.getElementById(this.id);
+        this.$parent = document.querySelector('#' + _this.$timer.id + ' ul');
+        this.days = {
+            $li: null,
+            $digit: null,
+            $components: null
+        };
+        this.hours = {
+            $li: null,
+            $digit: null,
+            $components: null
+        };
+        this.minutes = {
+            $li: null,
+            $digit: null,
+            $components: null
+        };
+        this.seconds = {
+            $li: null,
+            $digit: null,
+            $components: null
+        };
+        this.init();
+    }
+    ;timer.prototype.init = function() {
+        var _this = this, kt, kd;
+        kt = this.id + '-timestamp';
+        kd = this.id + '-duration';
+        switch (this.mode) {
+        case 'duration':
+            this.timestamp = parseInt(Date.now() / 1000) + this.duration;
+            if (this.persistent) {
+                if (registry.get(kd) != this.duration)
+                    registry.unset(kt);
+                registry.set(kd, this.duration);
+                if (registry.exists(kt))
+                    this.timestamp = parseInt(registry.get(kt));
+                else
+                    registry.set(kt, this.timestamp);
+            } else {
+                if (registry.exists(kt))
+                    registry.unset(kt);
+                if (registry.exists(kd))
+                    registry.unset(kd);
+            }
+            break;
+        default:
+            break;
+        }
+        window.setInterval(function() {
+            _this.updateDigits();
+            _this.updateSize();
+        }, 250);
+        this.updateDigits();
+        on('resize', function() {
+            _this.updateSize();
+        });
+        this.updateSize();
+    }
+    ;
+    timer.prototype.updateSize = function() {
+        var $items, $item, $digit, $components, $component, $label, $sublabel, $symbols, w, iw, h, f, i, j, found;
+        $items = document.querySelectorAll('#' + this.$timer.id + ' ul li .item');
+        $symbols = document.querySelectorAll('#' + this.$timer.id + ' .symbol');
+        $components = document.querySelectorAll('#' + this.$timer.id + ' .component');
+        h = 0;
+        f = 0;
+        for (j = 0; j < $components.length; j++) {
+            $components[j].style.lineHeight = '';
+            $components[j].style.height = '';
+        }
+        for (j = 0; j < $symbols.length; j++) {
+            $symbols[j].style.fontSize = '';
+            $symbols[j].style.lineHeight = '';
+            $symbols[j].style.height = '';
+        }
+        for (i = 0; i < $items.length; i++) {
+            $item = $items[i];
+            $component = $item.children[0].children[0];
+            w = $component.offsetWidth;
+            iw = $item.offsetWidth;
+            $digit = $item.children[0];
+            $digit.style.fontSize = '';
+            $digit.style.fontSize = (w * 1.65) + 'px';
+            h = Math.max(h, $digit.offsetHeight);
+            f = Math.max(f, (w * 1.65));
+            if ($item.children.length > 1) {
+                $label = $item.children[1];
+                found = false;
+                for (j = 0; j < $label.children.length; j++) {
+                    $sublabel = $label.children[j];
+                    $sublabel.style.display = '';
+                    if (!found && $sublabel.offsetWidth < iw) {
+                        found = true;
+                        $sublabel.style.display = '';
+                    } else
+                        $sublabel.style.display = 'none';
+                }
+            }
+        }
+        if ($items.length == 1) {
+            var x = $items[0].children[0]
+              , xs = getComputedStyle(x)
+              , xsa = getComputedStyle(x, ':after');
+            if (xsa.content != 'none')
+                h = parseInt(xsa.height) - parseInt(xs.marginTop) - parseInt(xs.marginBottom) + 24;
+        }
+        for (j = 0; j < $components.length; j++) {
+            $components[j].style.lineHeight = h + 'px';
+            $components[j].style.height = h + 'px';
+        }
+        for (j = 0; j < $symbols.length; j++) {
+            $symbols[j].style.fontSize = (f * 0.5) + 'px';
+            $symbols[j].style.lineHeight = h + 'px';
+            $symbols[j].style.height = h + 'px';
+        }
+        this.$parent.style.height = '';
+        this.$parent.style.height = this.$parent.offsetHeight + 'px';
+    }
+    ;
+    timer.prototype.updateDigits = function() {
+        var _this = this, x = [{
+            class: 'days',
+            digit: 0,
+            label: {
+                full: 'Days',
+                abbreviated: 'Days',
+                initialed: 'D'
+            }
+        }, {
+            class: 'hours',
+            digit: 0,
+            label: {
+                full: 'Hours',
+                abbreviated: 'Hrs',
+                initialed: 'H'
+            }
+        }, {
+            class: 'minutes',
+            digit: 0,
+            label: {
+                full: 'Minutes',
+                abbreviated: 'Mins',
+                initialed: 'M'
+            }
+        }, {
+            class: 'seconds',
+            digit: 0,
+            label: {
+                full: 'Seconds',
+                abbreviated: 'Secs',
+                initialed: 'S'
+            }
+        }, ], now, diff, zeros, status, i, j, x, z, t, s;
+        now = parseInt(Date.now() / 1000);
+        switch (this.mode) {
+        case 'countdown':
+        case 'duration':
+            if (this.timestamp >= now)
+                diff = this.timestamp - now;
+            else {
+                diff = 0;
+                if (!this.completed) {
+                    this.completed = true;
+                    if (this.completion)
+                        (this.completion)();
+                    if (this.completeUrl)
+                        window.setTimeout(function() {
+                            window.location.href = _this.completeUrl;
+                        }, 1000);
+                }
+            }
+            break;
+        default:
+        case 'default':
+            if (this.timestamp >= now)
+                diff = this.timestamp - now;
+            else
+                diff = now - this.timestamp;
+            break;
+        }
+        x[0].digit = Math.floor(diff / 86400);
+        diff -= x[0].digit * 86400;
+        x[1].digit = Math.floor(diff / 3600);
+        diff -= x[1].digit * 3600;
+        x[2].digit = Math.floor(diff / 60);
+        diff -= x[2].digit * 60;
+        x[3].digit = diff;
+        zeros = 0;
+        for (i = 0; i < x.length; i++)
+            if (x[i].digit == 0)
+                zeros++;
+            else
+                break;
+        while (zeros > 0 && x.length > this.precision) {
+            x.shift();
+            zeros--;
+        }
+        z = [];
+        for (i = 0; i < x.length; i++)
+            z.push(x[i].class);
+        status = z.join('-');
+        if (status == this.status) {
+            var $digit, $components;
+            for (i = 0; i < x.length; i++) {
+                $digit = document.querySelector('#' + this.id + ' .' + x[i].class + ' .digit');
+                $components = document.querySelectorAll('#' + this.id + ' .' + x[i].class + ' .digit .component');
+                if (!$digit)
+                    continue;
+                z = [];
+                t = String(x[i].digit);
+                if (x[i].digit < 10) {
+                    z.push('0');
+                    z.push(t);
+                } else
+                    for (j = 0; j < t.length; j++)
+                        z.push(t.substr(j, 1));
+                $digit.classList.remove('count1', 'count2', 'count3', 'count4');
+                $digit.classList.add('count' + z.length);
+                if ($components.length == z.length) {
+                    for (j = 0; j < $components.length && j < z.length; j++)
+                        $components[j].innerHTML = z[j];
+                } else {
+                    s = '';
+                    for (j = 0; j < $components.length && j < z.length; j++)
+                        s += '<span class="component x' + Math.random() + '">' + z[j] + '</span>';
+                    $digit.innerHTML = s;
+                }
+            }
+        } else {
+            s = '';
+            for (i = 0; i < x.length && i < this.precision; i++) {
+                z = [];
+                t = String(x[i].digit);
+                if (x[i].digit < 10) {
+                    z.push('0');
+                    z.push(t);
+                } else
+                    for (j = 0; j < t.length; j++)
+                        z.push(t.substr(j, 1));
+                if (i > 0)
+                    s += '<li class="delimiter">' + '<span class="symbol">:</span>' + '</li>';
+                s += '<li class="number ' + x[i].class + '">' + '<div class="item">';
+                s += '<span class="digit count' + t.length + '">';
+                for (j = 0; j < z.length; j++)
+                    s += '<span class="component">' + z[j] + '</span>';
+                s += '</span>';
+                switch (this.labelStyle) {
+                default:
+                case 'full':
+                    s += '<span class="label">' + '<span class="full">' + x[i].label.full + '</span>' + '<span class="abbreviated">' + x[i].label.abbreviated + '</span>' + '<span class="initialed">' + x[i].label.initialed + '</span>' + '</span>';
+                    break;
+                case 'abbreviated':
+                    s += '<span class="label">' + '<span class="abbreviated">' + x[i].label.abbreviated + '</span>' + '<span class="initialed">' + x[i].label.initialed + '</span>' + '</span>';
+                    break;
+                case 'initialed':
+                    s += '<span class="label">' + '<span class="initialed">' + x[i].label.initialed + '</span>' + '</span>';
+                    break;
+                case 'none':
+                    break;
+                }
+                s += '</div>' + '</li>';
+            }
+            _this.$parent.innerHTML = s;
+            this.status = status;
+        }
+    }
+    ;
+    new timer('timer01',{
+        mode: 'countdown',
+        precision: 4,
+        completeUrl: '',
+        timestamp: 1751320800,
+        labelStyle: 'none'
+    });
     onvisible.add('#container01', {
-        style: 'fade-up',
-        speed: 1000,
-        intensity: 6,
+        style: 'blur-in',
+        speed: 1500,
+        intensity: 10,
+        delay: 0,
+        replay: false
+    });
+    onvisible.add('#image01', {
+        style: 'fade-left',
+        speed: 1250,
+        intensity: 10,
         delay: 0,
         replay: false
     });
     onvisible.add('#text01', {
         style: 'fade-left',
-        speed: 750,
+        speed: 1250,
         intensity: 10,
         delay: 0,
         replay: false
@@ -833,10 +1128,10 @@
         staggerSelector: ':scope > li',
         replay: false
     });
-    onvisible.add('#divider01', {
-        style: 'fade-in',
-        speed: 1000,
-        intensity: 5,
+    onvisible.add('#timer01', {
+        style: 'blur-in',
+        speed: 1500,
+        intensity: 10,
         delay: 0,
         replay: false
     });
