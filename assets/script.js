@@ -238,18 +238,362 @@
             window.onerror = null;
         }
     };
+    var loaderTimeout = setTimeout(function() {
+        $body.classList.add('with-loader');
+    }, 500);
     var loadHandler = function() {
         setTimeout(function() {
+            clearTimeout(loaderTimeout);
             $body.classList.remove('is-loading');
             $body.classList.add('is-playing');
             setTimeout(function() {
+                $body.classList.remove('with-loader');
                 $body.classList.remove('is-playing');
                 $body.classList.add('is-ready');
-            }, 375);
+            }, 500);
         }, 100);
     };
     on('load', loadHandler);
-    loadElements(document.body);
+    (function() {
+        var initialSection, initialScrollPoint, initialId, header, footer, name, hideHeader, hideFooter, disableAutoScroll, h, e, ee, k, locked = false, scrollPointParent = function(target) {
+            while (target) {
+                if (target.parentElement && target.parentElement.tagName == 'SECTION')
+                    break;
+                target = target.parentElement;
+            }
+            return target;
+        }, scrollPointSpeed = function(scrollPoint) {
+            let x = parseInt(scrollPoint.dataset.scrollSpeed);
+            switch (x) {
+            case 5:
+                return 250;
+            case 4:
+                return 500;
+            case 3:
+                return 750;
+            case 2:
+                return 1000;
+            case 1:
+                return 1250;
+            default:
+                break;
+            }
+            return 750;
+        }, doNextScrollPoint = function(event) {
+            var e, target, id;
+            event.preventDefault();
+            event.stopPropagation();
+            e = scrollPointParent(event.target);
+            if (!e)
+                return;
+            while (e && e.nextElementSibling) {
+                e = e.nextElementSibling;
+                if (e.dataset.scrollId) {
+                    target = e;
+                    id = e.dataset.scrollId;
+                    break;
+                }
+            }
+            if (!target || !id)
+                return;
+            if (target.dataset.scrollInvisible == '1')
+                scrollToElement(target, 'smooth', scrollPointSpeed(target));
+            else
+                location.href = '#' + id;
+        }, doPreviousScrollPoint = function(e) {
+            var e, target, id;
+            event.preventDefault();
+            event.stopPropagation();
+            e = scrollPointParent(event.target);
+            if (!e)
+                return;
+            while (e && e.previousElementSibling) {
+                e = e.previousElementSibling;
+                if (e.dataset.scrollId) {
+                    target = e;
+                    id = e.dataset.scrollId;
+                    break;
+                }
+            }
+            if (!target || !id)
+                return;
+            if (target.dataset.scrollInvisible == '1')
+                scrollToElement(target, 'smooth', scrollPointSpeed(target));
+            else
+                location.href = '#' + id;
+        }, doFirstScrollPoint = function(e) {
+            var e, target, id;
+            event.preventDefault();
+            event.stopPropagation();
+            e = scrollPointParent(event.target);
+            if (!e)
+                return;
+            while (e && e.previousElementSibling) {
+                e = e.previousElementSibling;
+                if (e.dataset.scrollId) {
+                    target = e;
+                    id = e.dataset.scrollId;
+                }
+            }
+            if (!target || !id)
+                return;
+            if (target.dataset.scrollInvisible == '1')
+                scrollToElement(target, 'smooth', scrollPointSpeed(target));
+            else
+                location.href = '#' + id;
+        }, doLastScrollPoint = function(e) {
+            var e, target, id;
+            event.preventDefault();
+            event.stopPropagation();
+            e = scrollPointParent(event.target);
+            if (!e)
+                return;
+            while (e && e.nextElementSibling) {
+                e = e.nextElementSibling;
+                if (e.dataset.scrollId) {
+                    target = e;
+                    id = e.dataset.scrollId;
+                }
+            }
+            if (!target || !id)
+                return;
+            if (target.dataset.scrollInvisible == '1')
+                scrollToElement(target, 'smooth', scrollPointSpeed(target));
+            else
+                location.href = '#' + id;
+        }, doNextSection = function() {
+            var section;
+            section = $('#main > .inner > section.active').nextElementSibling;
+            if (!section || section.tagName != 'SECTION')
+                return;
+            location.href = '#' + section.id.replace(/-section$/, '');
+        }, doPreviousSection = function() {
+            var section;
+            section = $('#main > .inner > section.active').previousElementSibling;
+            if (!section || section.tagName != 'SECTION')
+                return;
+            location.href = '#' + (section.matches(':first-child') ? '' : section.id.replace(/-section$/, ''));
+        }, doFirstSection = function() {
+            var section;
+            section = $('#main > .inner > section:first-of-type');
+            if (!section || section.tagName != 'SECTION')
+                return;
+            location.href = '#' + section.id.replace(/-section$/, '');
+        }, doLastSection = function() {
+            var section;
+            section = $('#main > .inner > section:last-of-type');
+            if (!section || section.tagName != 'SECTION')
+                return;
+            location.href = '#' + section.id.replace(/-section$/, '');
+        }, resetSectionChangeElements = function(section) {
+            var ee, e, x;
+            ee = section.querySelectorAll('[data-reset-on-section-change="1"]');
+            for (e of ee) {
+                x = e ? e.tagName : null;
+                switch (x) {
+                case 'FORM':
+                    e.reset();
+                    break;
+                default:
+                    break;
+                }
+            }
+        }, activateSection = function(section, scrollPoint) {
+            var sectionHeight, currentSection, currentSectionHeight, name, hideHeader, hideFooter, disableAutoScroll, ee, k;
+            if (!section.classList.contains('inactive')) {
+                name = (section ? section.id.replace(/-section$/, '') : null);
+                disableAutoScroll = name ? ((name in sections) && ('disableAutoScroll'in sections[name]) && sections[name].disableAutoScroll) : false;
+                if (scrollPoint)
+                    scrollToElement(scrollPoint, 'smooth', scrollPointSpeed(scrollPoint));
+                else if (!disableAutoScroll)
+                    scrollToElement(null);
+                return false;
+            } else {
+                locked = true;
+                if (location.hash == '#kezdo')
+                    history.replaceState(null, null, '#');
+                name = (section ? section.id.replace(/-section$/, '') : null);
+                hideHeader = name ? ((name in sections) && ('hideHeader'in sections[name]) && sections[name].hideHeader) : false;
+                hideFooter = name ? ((name in sections) && ('hideFooter'in sections[name]) && sections[name].hideFooter) : false;
+                disableAutoScroll = name ? ((name in sections) && ('disableAutoScroll'in sections[name]) && sections[name].disableAutoScroll) : false;
+                if (header && hideHeader) {
+                    header.classList.add('hidden');
+                    header.style.display = 'none';
+                }
+                if (footer && hideFooter) {
+                    footer.classList.add('hidden');
+                    footer.style.display = 'none';
+                }
+                currentSection = $('#main > .inner > section:not(.inactive)');
+                currentSection.classList.add('inactive');
+                currentSection.classList.remove('active');
+                currentSection.style.display = 'none';
+                unloadElements(currentSection);
+                resetSectionChangeElements(currentSection);
+                if (header && !hideHeader) {
+                    header.style.display = '';
+                    header.classList.remove('hidden');
+                }
+                if (footer && !hideFooter) {
+                    footer.style.display = '';
+                    footer.classList.remove('hidden');
+                }
+                section.classList.remove('inactive');
+                section.classList.add('active');
+                section.style.display = '';
+                trigger('resize');
+                loadElements(section);
+                if (scrollPoint)
+                    scrollToElement(scrollPoint, 'instant');
+                else if (!disableAutoScroll)
+                    scrollToElement(null, 'instant');
+                locked = false;
+            }
+        }, sections = {
+            'kezdo': {
+                disableAutoScroll: true,
+            },
+            'erasmus': {
+                hideFooter: true,
+            },
+            'kepek': {
+                hideFooter: true,
+            },
+        };
+        window._nextScrollPoint = doNextScrollPoint;
+        window._previousScrollPoint = doPreviousScrollPoint;
+        window._firstScrollPoint = doFirstScrollPoint;
+        window._lastScrollPoint = doLastScrollPoint;
+        window._nextSection = doNextSection;
+        window._previousSection = doPreviousSection;
+        window._firstSection = doFirstSection;
+        window._lastSection = doLastSection;
+        window._scrollToTop = function() {
+            var section, id;
+            scrollToElement(null);
+            if (!!(section = $('section.active'))) {
+                id = section.id.replace(/-section$/, '');
+                if (id == 'kezdo')
+                    id = '';
+                history.pushState(null, null, '#' + id);
+            }
+        }
+        ;
+        if ('scrollRestoration'in history)
+            history.scrollRestoration = 'manual';
+        header = $('#header');
+        footer = $('#footer');
+        h = thisHash();
+        if (h && !h.match(/^[a-zA-Z0-9\-]+$/))
+            h = null;
+        if (e = $('[data-scroll-id="' + h + '"]')) {
+            initialScrollPoint = e;
+            initialSection = initialScrollPoint.parentElement;
+            initialId = initialSection.id;
+        } else if (e = $('#' + (h ? h : 'kezdo') + '-section')) {
+            initialScrollPoint = null;
+            initialSection = e;
+            initialId = initialSection.id;
+        }
+        if (!initialSection) {
+            initialScrollPoint = null;
+            initialSection = $('#' + 'kezdo' + '-section');
+            initialId = initialSection.id;
+            history.replaceState(undefined, undefined, '#');
+        }
+        name = (h ? h : 'kezdo');
+        hideHeader = name ? ((name in sections) && ('hideHeader'in sections[name]) && sections[name].hideHeader) : false;
+        hideFooter = name ? ((name in sections) && ('hideFooter'in sections[name]) && sections[name].hideFooter) : false;
+        disableAutoScroll = name ? ((name in sections) && ('disableAutoScroll'in sections[name]) && sections[name].disableAutoScroll) : false;
+        if (header && hideHeader) {
+            header.classList.add('hidden');
+            header.style.display = 'none';
+        }
+        if (footer && hideFooter) {
+            footer.classList.add('hidden');
+            footer.style.display = 'none';
+        }
+        ee = $$('#main > .inner > section:not([id="' + initialId + '"])');
+        for (k = 0; k < ee.length; k++) {
+            ee[k].className = 'inactive';
+            ee[k].style.display = 'none';
+        }
+        initialSection.classList.add('active');
+        loadElements(initialSection);
+        if (header)
+            loadElements(header);
+        if (footer)
+            loadElements(footer);
+        if (!disableAutoScroll)
+            scrollToElement(null, 'instant');
+        on('load', function() {
+            if (initialScrollPoint)
+                scrollToElement(initialScrollPoint, 'instant');
+        });
+        on('hashchange', function(event) {
+            var section, scrollPoint, h, e;
+            if (locked)
+                return false;
+            h = thisHash();
+            if (h && !h.match(/^[a-zA-Z0-9\-]+$/))
+                return false;
+            if (e = $('[data-scroll-id="' + h + '"]')) {
+                scrollPoint = e;
+                section = scrollPoint.parentElement;
+            } else if (e = $('#' + (h ? h : 'kezdo') + '-section')) {
+                scrollPoint = null;
+                section = e;
+            } else {
+                scrollPoint = null;
+                section = $('#' + 'kezdo' + '-section');
+                history.replaceState(undefined, undefined, '#');
+            }
+            if (!section)
+                return false;
+            activateSection(section, scrollPoint);
+            return false;
+        });
+        on('click', function(event) {
+            var t = event.target, tagName = t.tagName.toUpperCase(), scrollPoint, section;
+            switch (tagName) {
+            case 'IMG':
+            case 'SVG':
+            case 'USE':
+            case 'U':
+            case 'STRONG':
+            case 'EM':
+            case 'CODE':
+            case 'S':
+            case 'MARK':
+            case 'SPAN':
+                while (!!(t = t.parentElement))
+                    if (t.tagName == 'A')
+                        break;
+                if (!t)
+                    return;
+                break;
+            default:
+                break;
+            }
+            if (t.tagName == 'A' && t.getAttribute('href').substr(0, 1) == '#') {
+                if (!!(scrollPoint = $('[data-scroll-id="' + t.hash.substr(1) + '"][data-scroll-invisible="1"]'))) {
+                    event.preventDefault();
+                    section = scrollPoint.parentElement;
+                    if (section.classList.contains('inactive')) {
+                        history.pushState(null, null, '#' + section.id.replace(/-section$/, ''));
+                        activateSection(section, scrollPoint);
+                    } else {
+                        scrollToElement(scrollPoint, 'smooth', scrollPointSpeed(scrollPoint));
+                    }
+                } else if (t.hash == window.location.hash) {
+                    event.preventDefault();
+                    history.replaceState(undefined, undefined, '#');
+                    location.replace(t.hash);
+                }
+            }
+        });
+    }
+    )();
     var style, sheet, rule;
     style = document.createElement('style');
     style.appendChild(document.createTextNode(''));
@@ -406,6 +750,56 @@
         }
     };
     scrollEvents.init();
+    (function() {
+        var items = $$('.deferred'), loadHandler, enterHandler;
+        loadHandler = function() {
+            var i = this
+              , p = this.parentElement;
+            if (i.dataset.src !== 'done')
+                return;
+            if (Date.now() - i._startLoad < 375) {
+                p.classList.remove('loading');
+                p.style.backgroundImage = 'none';
+                i.style.transition = '';
+                i.style.opacity = 1;
+            } else {
+                p.classList.remove('loading');
+                i.style.opacity = 1;
+                setTimeout(function() {
+                    i.style.backgroundImage = 'none';
+                    i.style.transition = '';
+                }, 375);
+            }
+        }
+        ;
+        enterHandler = function() {
+            var i = this, p = this.parentElement, src;
+            src = i.dataset.src;
+            i.dataset.src = 'done';
+            p.classList.add('loading');
+            i._startLoad = Date.now();
+            i.src = src;
+        }
+        ;
+        items.forEach(function(p) {
+            var i = p.firstElementChild;
+            if (!p.classList.contains('enclosed')) {
+                p.style.backgroundImage = 'url(' + i.src + ')';
+                p.style.backgroundSize = '100% 100%';
+                p.style.backgroundPosition = 'top left';
+                p.style.backgroundRepeat = 'no-repeat';
+            }
+            i.style.opacity = 0;
+            i.style.transition = 'opacity 0.375s ease-in-out';
+            i.addEventListener('load', loadHandler);
+            scrollEvents.add({
+                element: i,
+                enter: enterHandler,
+                offset: 250,
+            });
+        });
+    }
+    )();
     var onvisible = {
         effects: {
             'blur-in': {
@@ -803,335 +1197,432 @@
             }
         },
     };
-    function timer(id, options) {
-        var _this = this, f;
-        this.id = id;
-        this.timestamp = options.timestamp;
-        this.duration = options.duration;
-        this.mode = options.mode;
-        this.precision = options.precision;
-        this.completeUrl = options.completeUrl;
-        this.completion = options.completion;
-        this.persistent = options.persistent;
-        this.labelStyle = options.labelStyle;
-        this.completed = false;
-        this.status = null;
-        this.$timer = document.getElementById(this.id);
-        this.$parent = document.querySelector('#' + _this.$timer.id + ' ul');
-        this.days = {
-            $li: null,
-            $digit: null,
-            $components: null
-        };
-        this.hours = {
-            $li: null,
-            $digit: null,
-            $components: null
-        };
-        this.minutes = {
-            $li: null,
-            $digit: null,
-            $components: null
-        };
-        this.seconds = {
-            $li: null,
-            $digit: null,
-            $components: null
-        };
-        this.init();
+    function lightboxGallery() {
+        var _this = this;
+        this.id = 'gallery';
+        this.$wrapper = $('#' + this.id);
+        this.$modal = null;
+        this.$modalImage = null;
+        this.$modalNext = null;
+        this.$modalPrevious = null;
+        this.$links = null;
+        this.locked = false;
+        this.current = null;
+        this.delay = 375;
+        this.navigation = null;
+        this.mobile = null;
+        this.protect = null;
+        this.zoomIntervalId = null;
+        this.initModal();
     }
-    ;timer.prototype.init = function() {
-        var _this = this, kt, kd;
-        kt = this.id + '-timestamp';
-        kd = this.id + '-duration';
-        switch (this.mode) {
-        case 'duration':
-            this.timestamp = parseInt(Date.now() / 1000) + this.duration;
-            if (this.persistent) {
-                if (registry.get(kd) != this.duration)
-                    registry.unset(kt);
-                registry.set(kd, this.duration);
-                if (registry.exists(kt))
-                    this.timestamp = parseInt(registry.get(kt));
-                else
-                    registry.set(kt, this.timestamp);
-            } else {
-                if (registry.exists(kt))
-                    registry.unset(kt);
-                if (registry.exists(kd))
-                    registry.unset(kd);
-            }
-            break;
-        default:
-            break;
+    ;lightboxGallery.prototype.init = function(config) {
+        var _this = this, $links = $$('#' + config.id + ' .thumbnail'), navigation = config.navigation, mobile = config.mobile, mobileNavigation = config.mobileNavigation, protect = ('protect'in config ? config.protect : false), i, j;
+        j = 0;
+        for (i = 0; i < $links.length; i++) {
+            if ($links[i].dataset.lightboxIgnore != '1')
+                j++;
         }
-        window.setInterval(function() {
-            _this.updateDigits();
-            _this.updateSize();
-        }, 250);
-        this.updateDigits();
-        on('resize', function() {
-            _this.updateSize();
+        if (j < 2)
+            navigation = false;
+        for (i = 0; i < $links.length; i++) {
+            if ($links[i].dataset.lightboxIgnore == '1')
+                continue;
+            (function(index) {
+                $links[index].addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    event.preventDefault();
+                    _this.show(index, {
+                        $links: $links,
+                        navigation: navigation,
+                        mobile: mobile,
+                        mobileNavigation: mobileNavigation,
+                        protect: protect,
+                    });
+                });
+            }
+            )(i);
+        }
+    }
+    ;
+    lightboxGallery.prototype.initModal = function() {
+        var _this = this, dragStart = null, dragEnd = null, $modal, $modalInner, $modalImage, $modalNext, $modalPrevious;
+        $modal = document.createElement('div');
+        $modal.id = this.id + '-modal';
+        $modal.tabIndex = -1;
+        $modal.className = 'gallery-modal';
+        $modal.innerHTML = '<div class="inner"><img src="" /></div><div class="nav previous"></div><div class="nav next"></div><div class="close"></div>';
+        $body.appendChild($modal);
+        $modalInner = $('#' + this.id + '-modal .inner');
+        $modalImage = $('#' + this.id + '-modal img');
+        $modalImage.addEventListener('load', function() {
+            $modal.classList.add('done');
+            setTimeout(function() {
+                if (!$modal.classList.contains('visible'))
+                    return;
+                $modal.classList.add('loaded');
+                setTimeout(function() {
+                    $modal.classList.remove('switching', 'from-left', 'from-right', 'done');
+                }, _this.delay);
+            }, ($modal.classList.contains('switching') ? 0 : _this.delay));
         });
-        this.updateSize();
-    }
-    ;
-    timer.prototype.updateSize = function() {
-        var $items, $item, $digit, $components, $component, $label, $sublabel, $symbols, w, iw, h, f, i, j, found;
-        $items = document.querySelectorAll('#' + this.$timer.id + ' ul li .item');
-        $symbols = document.querySelectorAll('#' + this.$timer.id + ' .symbol');
-        $components = document.querySelectorAll('#' + this.$timer.id + ' .component');
-        h = 0;
-        f = 0;
-        for (j = 0; j < $components.length; j++) {
-            $components[j].style.lineHeight = '';
-            $components[j].style.height = '';
-        }
-        for (j = 0; j < $symbols.length; j++) {
-            $symbols[j].style.fontSize = '';
-            $symbols[j].style.lineHeight = '';
-            $symbols[j].style.height = '';
-        }
-        for (i = 0; i < $items.length; i++) {
-            $item = $items[i];
-            $component = $item.children[0].children[0];
-            w = $component.offsetWidth;
-            iw = $item.offsetWidth;
-            $digit = $item.children[0];
-            $digit.style.fontSize = '';
-            $digit.style.fontSize = (w * 1.65) + 'px';
-            h = Math.max(h, $digit.offsetHeight);
-            f = Math.max(f, (w * 1.65));
-            if ($item.children.length > 1) {
-                $label = $item.children[1];
+        $modalImage.addEventListener('contextmenu', function() {
+            if (_this.protect)
+                event.preventDefault();
+        }, true);
+        $modalImage.addEventListener('dragstart', function() {
+            if (_this.protect)
+                event.preventDefault();
+        }, true);
+        $modalNext = $('#' + this.id + '-modal .next');
+        $modalPrevious = $('#' + this.id + '-modal .previous');
+        $modal.show = function(index, offset, direction) {
+            var item, i, j, found;
+            if (_this.locked)
+                return;
+            if (typeof index != 'number')
+                index = _this.current;
+            if (typeof offset == 'number') {
                 found = false;
-                for (j = 0; j < $label.children.length; j++) {
-                    $sublabel = $label.children[j];
-                    $sublabel.style.display = '';
-                    if (!found && $sublabel.offsetWidth < iw) {
+                j = 0;
+                for (j = 0; j < _this.$links.length; j++) {
+                    index += offset;
+                    if (index < 0)
+                        index = _this.$links.length - 1;
+                    else if (index >= _this.$links.length)
+                        index = 0;
+                    if (index == _this.current)
+                        break;
+                    item = _this.$links.item(index);
+                    if (!item)
+                        break;
+                    if (item.dataset.lightboxIgnore != '1') {
                         found = true;
-                        $sublabel.style.display = '';
-                    } else
-                        $sublabel.style.display = 'none';
+                        break;
+                    }
                 }
+                if (!found)
+                    return;
+            } else {
+                if (index < 0)
+                    index = _this.$links.length - 1;
+                else if (index >= _this.$links.length)
+                    index = 0;
+                if (index == _this.current)
+                    return;
+                item = _this.$links.item(index);
+                if (!item)
+                    return;
+                if (item.dataset.lightboxIgnore == '1')
+                    return;
+            }
+            if (client.mobile)
+                _this.zoomIntervalId = setInterval(function() {
+                    _this.zoomHandler();
+                }, 250);
+            _this.locked = true;
+            if (_this.current !== null) {
+                $modal.classList.remove('loaded');
+                $modal.classList.add('switching');
+                switch (direction) {
+                case -1:
+                    $modal.classList.add('from-left');
+                    break;
+                case 1:
+                    $modal.classList.add('from-right');
+                    break;
+                default:
+                    break;
+                }
+                setTimeout(function() {
+                    _this.current = index;
+                    $modalImage.src = item.href;
+                    setTimeout(function() {
+                        $modal.focus();
+                        _this.locked = false;
+                    }, _this.delay);
+                }, _this.delay);
+            } else {
+                _this.current = index;
+                $modalImage.src = item.href;
+                $modal.classList.add('visible');
+                setTimeout(function() {
+                    $modal.focus();
+                    _this.locked = false;
+                }, _this.delay);
             }
         }
-        if ($items.length == 1) {
-            var x = $items[0].children[0]
-              , xs = getComputedStyle(x)
-              , xsa = getComputedStyle(x, ':after');
-            if (xsa.content != 'none')
-                h = parseInt(xsa.height) - parseInt(xs.marginTop) - parseInt(xs.marginBottom) + 24;
+        ;
+        $modal.hide = function() {
+            if (_this.locked)
+                return;
+            if (!$modal.classList.contains('visible'))
+                return;
+            _this.locked = true;
+            $modal.classList.remove('visible');
+            $modal.classList.remove('loaded');
+            $modal.classList.remove('switching', 'from-left', 'from-right', 'done');
+            clearInterval(_this.zoomIntervalId);
+            setTimeout(function() {
+                $modalImage.src = '';
+                _this.locked = false;
+                $body.focus();
+                _this.current = null;
+            }, _this.delay);
         }
-        for (j = 0; j < $components.length; j++) {
-            $components[j].style.lineHeight = h + 'px';
-            $components[j].style.height = h + 'px';
+        ;
+        $modal.next = function(direction) {
+            $modal.show(null, 1, direction);
         }
-        for (j = 0; j < $symbols.length; j++) {
-            $symbols[j].style.fontSize = (f * 0.5) + 'px';
-            $symbols[j].style.lineHeight = h + 'px';
-            $symbols[j].style.height = h + 'px';
+        ;
+        $modal.previous = function(direction) {
+            $modal.show(null, -1, direction);
         }
-        this.$parent.style.height = '';
-        this.$parent.style.height = this.$parent.offsetHeight + 'px';
+        ;
+        $modal.first = function() {
+            $modal.show(0);
+        }
+        ;
+        $modal.last = function() {
+            $modal.show(_this.$links.length - 1);
+        }
+        ;
+        $modalInner.addEventListener('touchstart', function(event) {
+            if (!_this.navigation)
+                return;
+            if (event.touches.length > 1)
+                return;
+            dragStart = {
+                x: event.touches[0].clientX,
+                y: event.touches[0].clientY
+            };
+        });
+        $modalInner.addEventListener('touchmove', function(event) {
+            var dx, dy;
+            if (!_this.navigation)
+                return;
+            if (!dragStart || event.touches.length > 1)
+                return;
+            dragEnd = {
+                x: event.touches[0].clientX,
+                y: event.touches[0].clientY
+            };
+            dx = dragStart.x - dragEnd.x;
+            dy = dragStart.y - dragEnd.y;
+            if (Math.abs(dx) < 50)
+                return;
+            event.preventDefault();
+            if (dx > 0)
+                $modal.next(-1);
+            else if (dx < 0)
+                $modal.previous(1);
+        });
+        $modalInner.addEventListener('touchend', function(event) {
+            if (!_this.navigation)
+                return;
+            dragStart = null;
+            dragEnd = null;
+        });
+        $modal.addEventListener('click', function(event) {
+            $modal.hide();
+        });
+        $modal.addEventListener('keydown', function(event) {
+            if (!$modal.classList.contains('visible'))
+                return;
+            switch (event.keyCode) {
+            case 39:
+            case 32:
+                if (!_this.navigation)
+                    break;
+                event.preventDefault();
+                event.stopPropagation();
+                $modal.next();
+                break;
+            case 37:
+                if (!_this.navigation)
+                    break;
+                event.preventDefault();
+                event.stopPropagation();
+                $modal.previous();
+                break;
+            case 36:
+                if (!_this.navigation)
+                    break;
+                event.preventDefault();
+                event.stopPropagation();
+                $modal.first();
+                break;
+            case 35:
+                if (!_this.navigation)
+                    break;
+                event.preventDefault();
+                event.stopPropagation();
+                $modal.last();
+                break;
+            case 27:
+                event.preventDefault();
+                event.stopPropagation();
+                $modal.hide();
+                break;
+            }
+        });
+        $modalNext.addEventListener('click', function(event) {
+            $modal.next();
+        });
+        $modalPrevious.addEventListener('click', function(event) {
+            $modal.previous();
+        });
+        this.$modal = $modal;
+        this.$modalImage = $modalImage;
+        this.$modalNext = $modalNext;
+        this.$modalPrevious = $modalPrevious;
     }
     ;
-    timer.prototype.updateDigits = function() {
-        var _this = this, x = [{
-            class: 'days',
-            digit: 0,
-            label: {
-                full: 'Days',
-                abbreviated: 'Days',
-                initialed: 'D'
-            }
-        }, {
-            class: 'hours',
-            digit: 0,
-            label: {
-                full: 'Hours',
-                abbreviated: 'Hrs',
-                initialed: 'H'
-            }
-        }, {
-            class: 'minutes',
-            digit: 0,
-            label: {
-                full: 'Minutes',
-                abbreviated: 'Mins',
-                initialed: 'M'
-            }
-        }, {
-            class: 'seconds',
-            digit: 0,
-            label: {
-                full: 'Seconds',
-                abbreviated: 'Secs',
-                initialed: 'S'
-            }
-        }, ], now, diff, zeros, status, i, j, x, z, t, s;
-        now = parseInt(Date.now() / 1000);
-        switch (this.mode) {
-        case 'countdown':
-        case 'duration':
-            if (this.timestamp >= now)
-                diff = this.timestamp - now;
-            else {
-                diff = 0;
-                if (!this.completed) {
-                    this.completed = true;
-                    if (this.completion)
-                        (this.completion)();
-                    if (this.completeUrl)
-                        window.setTimeout(function() {
-                            window.location.href = _this.completeUrl;
-                        }, 1000);
-                }
-            }
-            break;
-        default:
-        case 'default':
-            if (this.timestamp >= now)
-                diff = this.timestamp - now;
-            else
-                diff = now - this.timestamp;
-            break;
-        }
-        x[0].digit = Math.floor(diff / 86400);
-        diff -= x[0].digit * 86400;
-        x[1].digit = Math.floor(diff / 3600);
-        diff -= x[1].digit * 3600;
-        x[2].digit = Math.floor(diff / 60);
-        diff -= x[2].digit * 60;
-        x[3].digit = diff;
-        zeros = 0;
-        for (i = 0; i < x.length; i++)
-            if (x[i].digit == 0)
-                zeros++;
-            else
-                break;
-        while (zeros > 0 && x.length > this.precision) {
-            x.shift();
-            zeros--;
-        }
-        z = [];
-        for (i = 0; i < x.length; i++)
-            z.push(x[i].class);
-        status = z.join('-');
-        if (status == this.status) {
-            var $digit, $components;
-            for (i = 0; i < x.length; i++) {
-                $digit = document.querySelector('#' + this.id + ' .' + x[i].class + ' .digit');
-                $components = document.querySelectorAll('#' + this.id + ' .' + x[i].class + ' .digit .component');
-                if (!$digit)
-                    continue;
-                z = [];
-                t = String(x[i].digit);
-                if (x[i].digit < 10) {
-                    z.push('0');
-                    z.push(t);
-                } else
-                    for (j = 0; j < t.length; j++)
-                        z.push(t.substr(j, 1));
-                $digit.classList.remove('count1', 'count2', 'count3', 'count4');
-                $digit.classList.add('count' + z.length);
-                if ($components.length == z.length) {
-                    for (j = 0; j < $components.length && j < z.length; j++)
-                        $components[j].innerHTML = z[j];
-                } else {
-                    s = '';
-                    for (j = 0; j < $components.length && j < z.length; j++)
-                        s += '<span class="component x' + Math.random() + '">' + z[j] + '</span>';
-                    $digit.innerHTML = s;
-                }
+    lightboxGallery.prototype.show = function(href, config) {
+        this.$links = config.$links;
+        this.navigation = config.navigation;
+        this.mobile = config.mobile;
+        this.mobileNavigation = config.mobileNavigation;
+        this.protect = config.protect;
+        if (this.navigation) {
+            this.$modalNext.style.display = '';
+            this.$modalPrevious.style.display = '';
+            if (client.mobile && !this.mobileNavigation) {
+                this.$modalNext.style.display = 'none';
+                this.$modalPrevious.style.display = 'none';
             }
         } else {
-            s = '';
-            for (i = 0; i < x.length && i < this.precision; i++) {
-                z = [];
-                t = String(x[i].digit);
-                if (x[i].digit < 10) {
-                    z.push('0');
-                    z.push(t);
-                } else
-                    for (j = 0; j < t.length; j++)
-                        z.push(t.substr(j, 1));
-                if (i > 0)
-                    s += '<li class="delimiter">' + '<span class="symbol">:</span>' + '</li>';
-                s += '<li class="number ' + x[i].class + '">' + '<div class="item">';
-                s += '<span class="digit count' + t.length + '">';
-                for (j = 0; j < z.length; j++)
-                    s += '<span class="component">' + z[j] + '</span>';
-                s += '</span>';
-                switch (this.labelStyle) {
-                default:
-                case 'full':
-                    s += '<span class="label">' + '<span class="full">' + x[i].label.full + '</span>' + '<span class="abbreviated">' + x[i].label.abbreviated + '</span>' + '<span class="initialed">' + x[i].label.initialed + '</span>' + '</span>';
-                    break;
-                case 'abbreviated':
-                    s += '<span class="label">' + '<span class="abbreviated">' + x[i].label.abbreviated + '</span>' + '<span class="initialed">' + x[i].label.initialed + '</span>' + '</span>';
-                    break;
-                case 'initialed':
-                    s += '<span class="label">' + '<span class="initialed">' + x[i].label.initialed + '</span>' + '</span>';
-                    break;
-                case 'none':
-                    break;
-                }
-                s += '</div>' + '</li>';
-            }
-            _this.$parent.innerHTML = s;
-            this.status = status;
+            this.$modalNext.style.display = 'none';
+            this.$modalPrevious.style.display = 'none';
         }
+        if (this.protect) {
+            this.$modalImage.style.WebkitTouchCallout = 'none';
+            this.$modalImage.style.userSelect = 'none';
+        } else {
+            this.$modalImage.style.WebkitTouchCallout = '';
+            this.$modalImage.style.userSelect = '';
+        }
+        if (client.mobile && !this.mobile)
+            return;
+        this.$modal.show(href);
     }
     ;
-    new timer('timer01',{
-        mode: 'countdown',
-        precision: 4,
-        completeUrl: '',
-        timestamp: 1751320800,
-        labelStyle: 'none'
+    lightboxGallery.prototype.zoomHandler = function() {
+        var threshold = window.matchMedia('(orientation: portrait)').matches ? 50 : 100;
+        if (window.outerWidth > window.innerWidth + threshold)
+            this.$modal.classList.add('zooming');
+        else
+            this.$modal.classList.remove('zooming');
+    }
+    ;
+    var _lightboxGallery = new lightboxGallery;
+    _lightboxGallery.init({
+        id: 'gallery01',
+        navigation: true,
+        mobile: true,
+        mobileNavigation: false,
+        protect: true,
     });
-    onvisible.add('#container01', {
-        style: 'blur-in',
-        speed: 1500,
-        intensity: 10,
-        delay: 0,
-        replay: false
-    });
-    onvisible.add('#image01', {
-        style: 'fade-left',
-        speed: 1250,
-        intensity: 10,
+    onvisible.add('h1.style1, h2.style1, h3.style1, p.style1', {
+        style: 'fade-up',
+        speed: 750,
+        intensity: 2,
         delay: 0,
         replay: false
     });
     onvisible.add('#text01', {
-        style: 'fade-left',
-        speed: 1250,
-        intensity: 10,
+        style: 'fade-up',
+        speed: 750,
+        intensity: 4,
         delay: 0,
         replay: false
     });
-    onvisible.add('#text02', {
-        style: 'fade-left',
-        speed: 1250,
-        intensity: 10,
+    onvisible.add('.buttons.style1', {
+        style: 'fade-up',
+        speed: 750,
+        intensity: 6,
         delay: 0,
         replay: false
     });
-    onvisible.add('#icons01', {
-        style: 'fade-right',
-        speed: 1250,
+    onvisible.add('h1.style3, h2.style3, h3.style3, p.style3', {
+        style: 'fade-up',
+        speed: 750,
         intensity: 2,
         delay: 0,
-        stagger: 125,
+        replay: false
+    });
+    onvisible.add('h1.style4, h2.style4, h3.style4, p.style4', {
+        style: 'fade-up',
+        speed: 750,
+        intensity: 4,
+        delay: 0,
+        replay: false
+    });
+    onvisible.add('#container04', {
+        style: 'blur-in',
+        speed: 1000,
+        intensity: 5,
+        delay: 0,
+        replay: true
+    });
+    onvisible.add('#container04 > .wrapper > .inner', {
+        style: 'fade-in',
+        speed: 1250,
+        intensity: 5,
+        delay: 0,
+        replay: true
+    });
+    onvisible.add('#icons03', {
+        style: 'blur-in',
+        speed: 1000,
+        intensity: 3,
+        delay: 0,
+        stagger: 250,
         staggerSelector: ':scope > li',
         replay: false
     });
-    onvisible.add('#timer01', {
+    onvisible.add('#container01', {
         style: 'blur-in',
-        speed: 1500,
-        intensity: 10,
+        speed: 750,
+        intensity: 1,
+        delay: 0,
+        replay: true
+    });
+    onvisible.add('#container01 > .wrapper > .inner', {
+        style: 'fade-in',
+        speed: 1125,
+        intensity: 5,
+        delay: 0,
+        replay: true
+    });
+    onvisible.add('#icons02', {
+        style: 'blur-in',
+        speed: 1000,
+        intensity: 3,
+        delay: 0,
+        stagger: 250,
+        staggerSelector: ':scope > li',
+        replay: false
+    });
+    onvisible.add('#gallery01', {
+        style: 'blur-in',
+        speed: 1000,
+        intensity: 5,
+        delay: 0,
+        replay: true
+    });
+    onvisible.add('#icons01', {
+        style: 'fade-up',
+        speed: 1000,
+        intensity: 3,
+        delay: 0,
+        stagger: 250,
+        staggerSelector: ':scope > li',
+        replay: false
+    });
+    onvisible.add('#text03', {
+        style: 'fade-up',
+        speed: 750,
+        intensity: 4,
         delay: 0,
         replay: false
     });
