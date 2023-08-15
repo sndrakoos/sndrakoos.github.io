@@ -797,7 +797,7 @@ h1.style4 span.p:nth-child(n + 2), h2.style4 span.p:nth-child(n + 2), h3.style4 
     justify-content: center;
     background-attachment: scroll;
     border-radius: 1.25rem;
-    background-image: linear-gradient(114deg, rgba(0,0,0,0.541) 45%, rgba(0,0,0,0.302) 100%), url('assets/images/container01.jpg?v=8d79265d');
+    background-image: linear-gradient(114deg, rgba(0,0,0,0.541) 45%, rgba(0,0,0,0.302) 100%), url('assets/images/erasmusbg.jpg');
     background-position: 0% 0%, 50% 50%;
     background-repeat: repeat, no-repeat;
     background-size: cover, cover;
