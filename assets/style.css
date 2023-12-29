@@ -1,3 +1,11 @@
+::-moz-selection {
+    background-color: transparent;
+}
+
+::selection {
+    background-color: transparent;
+}
+
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
     margin: 0;
     padding: 0;
@@ -7,8 +15,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
     vertical-align: baseline;
 }
 
-article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,
-section {
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
     display: block;
 }
 
@@ -16,20 +23,15 @@ body {
     line-height: 1;
 }
 
-ol,
-ul {
+ol,ul {
     list-style: none;
 }
 
-blockquote,
-q {
+blockquote,q {
     quotes: none;
 }
 
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
+blockquote:before,blockquote:after,q:before,q:after {
     content: '';
     content: none;
 }
@@ -53,19 +55,14 @@ input::-moz-focus-inner {
     padding: 0
 }
 
-input[type="text"],
-input[type="email"],
-select,
-textarea {
+input[type="text"],input[type="email"],select,textarea {
     -moz-appearance: none;
     -webkit-appearance: none;
     -ms-appearance: none;
     appearance: none
 }
 
-*,
-*:before,
-*:after {
+*, *:before, *:after {
     box-sizing: border-box;
 }
 
@@ -146,7 +143,7 @@ em {
 }
 
 code {
-    background-color: rgba(144, 144, 144, 0.25);
+    background-color: rgba(144,144,144,0.25);
     border-radius: 0.25em;
     font-family: 'Lucida Console', 'Courier New', monospace;
     font-size: 0.9em;
@@ -158,12 +155,12 @@ code {
 }
 
 mark {
-    background-color: rgba(144, 144, 144, 0.25);
+    background-color: rgba(144,144,144,0.25);
 }
 
 spoiler-text {
     -webkit-text-stroke: 0;
-    background-color: rgba(32, 32, 32, 0.75);
+    background-color: rgba(32,32,32,0.75);
     text-shadow: none;
     text-stroke: 0;
     color: transparent;
@@ -233,7 +230,7 @@ a[onclick]:not([href]) {
     transition: opacity 0.5s ease-in-out 0s;
 }
 
-#main>.inner {
+#main > .inner {
     --padding-horizontal: 6.125rem;
     --padding-vertical: 12rem;
     --spacing: 1.5rem;
@@ -246,38 +243,38 @@ a[onclick]:not([href]) {
     padding: var(--padding-vertical) var(--padding-horizontal);
 }
 
-#main>.inner>* {
+#main > .inner > * {
     margin-top: var(--spacing);
     margin-bottom: var(--spacing);
 }
 
-#main>.inner> :first-child {
+#main > .inner > :first-child {
     margin-top: 0 !important;
 }
 
-#main>.inner> :last-child {
+#main > .inner > :last-child {
     margin-bottom: 0 !important;
 }
 
-#main>.inner>.full {
+#main > .inner > .full {
     margin-left: calc(var(--padding-horizontal) * -1);
     max-width: calc(100% + calc(var(--padding-horizontal) * 2) + 0.4725px);
     width: calc(100% + calc(var(--padding-horizontal) * 2) + 0.4725px);
 }
 
-#main>.inner>.full:first-child {
+#main > .inner > .full:first-child {
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
     margin-top: calc(var(--padding-vertical) * -1) !important;
 }
 
-#main>.inner>.full:last-child {
+#main > .inner > .full:last-child {
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
     margin-bottom: calc(var(--padding-vertical) * -1) !important;
 }
 
-#main>.inner>.full.screen {
+#main > .inner > .full.screen {
     border-radius: 0 !important;
     max-width: 100vw;
     position: relative;
@@ -327,9 +324,7 @@ body.is-playing.with-loader #wrapper:after {
     visibility: hidden;
 }
 
-body.is-instant #main,
-body.is-instant #main>.inner>*,
-body.is-instant #main>.inner>section>* {
+body.is-instant #main, body.is-instant #main > .inner > *,body.is-instant #main > .inner > section > * {
     transition: none !important;
 }
 
@@ -417,7 +412,7 @@ body.is-instant:after {
     position: relative;
 }
 
-.icons li a+svg {
+.icons li a + svg {
     display: block;
     height: 100%;
     left: 0;
@@ -467,7 +462,7 @@ body.is-instant:after {
     fill: #8C8C8C;
 }
 
-.icons.style1 li a+svg {
+.icons.style1 li a + svg {
     transition: transform 0.25s ease, fill 0.25s ease, stroke 0.25s ease;
 }
 
@@ -475,50 +470,21 @@ body.is-instant:after {
     transform: scale(1.2);
 }
 
-.icons.style1 li a:hover+svg {
+.icons.style1 li a:hover + svg {
     transform: scale(1.2);
 }
 
-h1,
-h2,
-h3,
-p {
+h1, h2, h3, p {
     direction: var(--site-language-direction);
     position: relative;
 }
 
-h1 span.p,
-h2 span.p,
-h3 span.p,
-p span.p {
+h1 span.p, h2 span.p, h3 span.p, p span.p {
     display: block;
     position: relative;
 }
 
-h1 span[style],
-h2 span[style],
-h3 span[style],
-p span[style],
-h1 strong,
-h2 strong,
-h3 strong,
-p strong,
-h1 a,
-h2 a,
-h3 a,
-p a,
-h1 code,
-h2 code,
-h3 code,
-p code,
-h1 mark,
-h2 mark,
-h3 mark,
-p mark,
-h1 spoiler-text,
-h2 spoiler-text,
-h3 spoiler-text,
-p spoiler-text {
+h1 span[style], h2 span[style], h3 span[style], p span[style], h1 strong, h2 strong, h3 strong, p strong, h1 a, h2 a, h3 a, p a, h1 code, h2 code, h3 code, p code, h1 mark, h2 mark, h3 mark, p mark, h1 spoiler-text, h2 spoiler-text, h3 spoiler-text, p spoiler-text {
     -webkit-text-fill-color: currentcolor;
 }
 
@@ -570,14 +536,14 @@ p spoiler-text {
     position: relative;
 }
 
-.container>.wrapper {
+.container > .wrapper {
     vertical-align: top;
     position: relative;
     max-width: 100%;
     border-radius: inherit;
 }
 
-.container>.wrapper>.inner {
+.container > .wrapper > .inner {
     vertical-align: top;
     position: relative;
     max-width: 100%;
@@ -585,22 +551,22 @@ p spoiler-text {
     text-align: var(--alignment);
 }
 
-#main .container.full:first-child>.wrapper {
+#main .container.full:first-child > .wrapper {
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
 }
 
-#main .container.full:last-child>.wrapper {
+#main .container.full:last-child > .wrapper {
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
 }
 
-#main .container.full:first-child>.wrapper>.inner {
+#main .container.full:first-child > .wrapper > .inner {
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
 }
 
-#main .container.full:last-child>.wrapper>.inner {
+#main .container.full:last-child > .wrapper > .inner {
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
 }
@@ -617,7 +583,7 @@ p spoiler-text {
     background-color: transparent;
 }
 
-#container02>.wrapper>.inner {
+#container02 > .wrapper > .inner {
     --gutters: 5rem;
     --padding-horizontal: 6rem;
     --padding-vertical: 0.625rem;
@@ -625,31 +591,31 @@ p spoiler-text {
     padding: var(--padding-vertical) var(--padding-horizontal);
 }
 
-#container02>.wrapper {
+#container02 > .wrapper {
     max-width: 53rem;
     width: 100%;
 }
 
-#container02.default>.wrapper>.inner>* {
+#container02.default > .wrapper > .inner > * {
     margin-bottom: var(--spacing);
     margin-top: var(--spacing);
 }
 
-#container02.default>.wrapper>.inner>*:first-child {
+#container02.default > .wrapper > .inner > *:first-child {
     margin-top: 0 !important;
 }
 
-#container02.default>.wrapper>.inner>*:last-child {
+#container02.default > .wrapper > .inner > *:last-child {
     margin-bottom: 0 !important;
 }
 
-#container02.columns>.wrapper>.inner {
+#container02.columns > .wrapper > .inner {
     flex-wrap: wrap;
     display: flex;
     align-items: center;
 }
 
-#container02.columns>.wrapper>.inner>* {
+#container02.columns > .wrapper > .inner > * {
     flex-grow: 0;
     flex-shrink: 0;
     max-width: 100%;
@@ -657,95 +623,95 @@ p spoiler-text {
     padding: 0 0 0 var(--gutters);
 }
 
-#container02.columns>.wrapper>.inner>*>* {
+#container02.columns > .wrapper > .inner > * > * {
     margin-bottom: var(--spacing);
     margin-top: var(--spacing);
 }
 
-#container02.columns>.wrapper>.inner>*>*:first-child {
+#container02.columns > .wrapper > .inner > * > *:first-child {
     margin-top: 0 !important;
 }
 
-#container02.columns>.wrapper>.inner>*>*:last-child {
+#container02.columns > .wrapper > .inner > * > *:last-child {
     margin-bottom: 0 !important;
 }
 
-#container02.columns>.wrapper>.inner>*:first-child {
+#container02.columns > .wrapper > .inner > *:first-child {
     margin-left: calc(var(--gutters) * -1);
 }
 
-#container02.default>.wrapper>.inner>.full {
+#container02.default > .wrapper > .inner > .full {
     margin-left: calc(var(--padding-horizontal) * -1);
     max-width: none !important;
     width: calc(100% + (var(--padding-horizontal) * 2) + 0.4725px);
 }
 
-#container02.default>.wrapper>.inner>.full:first-child {
+#container02.default > .wrapper > .inner > .full:first-child {
     margin-top: calc(var(--padding-vertical) * -1) !important;
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
 }
 
-#container02.default>.wrapper>.inner>.full:last-child {
+#container02.default > .wrapper > .inner > .full:last-child {
     margin-bottom: calc(var(--padding-vertical) * -1) !important;
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
 }
 
-#container02.columns>.wrapper>.inner>div>.full {
+#container02.columns > .wrapper > .inner > div > .full {
     margin-left: calc(var(--gutters) * -0.5);
     max-width: none !important;
     width: calc(100% + var(--gutters) + 0.4725px);
 }
 
-#container02.columns>.wrapper>.inner>div:first-child>.full {
+#container02.columns > .wrapper > .inner > div:first-child > .full {
     margin-left: calc(var(--padding-horizontal) * -1);
     width: calc(100% + var(--padding-horizontal) + calc(var(--gutters) * 0.5) + 0.4725px);
 }
 
-#container02.columns>.wrapper>.inner>div:last-child>.full {
+#container02.columns > .wrapper > .inner > div:last-child > .full {
     width: calc(100% + var(--padding-horizontal) + calc(var(--gutters) * 0.5) + 0.4725px);
 }
 
-#container02.columns>.wrapper>.inner>div>.full:first-child {
+#container02.columns > .wrapper > .inner > div > .full:first-child {
     margin-top: calc(var(--padding-vertical) * -1) !important;
 }
 
-#container02.columns>.wrapper>.inner>div>.full:last-child {
+#container02.columns > .wrapper > .inner > div > .full:last-child {
     margin-bottom: calc(var(--padding-vertical) * -1) !important;
 }
 
-#container02.columns>.wrapper>.inner>.full {
+#container02.columns > .wrapper > .inner > .full {
     align-self: stretch;
 }
 
-#container02.columns>.wrapper>.inner>.full:first-child {
+#container02.columns > .wrapper > .inner > .full:first-child {
     border-bottom-left-radius: inherit;
     border-top-left-radius: inherit;
 }
 
-#container02.columns>.wrapper>.inner>.full:last-child {
+#container02.columns > .wrapper > .inner > .full:last-child {
     border-bottom-right-radius: inherit;
     border-top-right-radius: inherit;
 }
 
-#container02.columns>.wrapper>.inner>.full>.full:first-child:last-child {
+#container02.columns > .wrapper > .inner > .full > .full:first-child:last-child {
     border-radius: inherit;
     height: calc(100% + (var(--padding-vertical) * 2));
 }
 
-#container02.columns>.wrapper>.inner>.full>.full:first-child:last-child>* {
+#container02.columns > .wrapper > .inner > .full > .full:first-child:last-child > * {
     border-radius: inherit;
     height: 100%;
     position: absolute;
     width: 100%;
 }
 
-#container02>.wrapper>.inner> :nth-child(1) {
+#container02 > .wrapper > .inner > :nth-child(1) {
     width: calc(50% + (var(--gutters) / 2));
 }
 
-#container02>.wrapper>.inner> :nth-child(2) {
+#container02 > .wrapper > .inner > :nth-child(2) {
     width: calc(50% + (var(--gutters) / 2));
 }
 
@@ -793,7 +759,7 @@ p spoiler-text {
 .icc-credits span::after {
     background-image: linear-gradient(30deg, #A464A1 15%, #3B5DAD 85%);
     border-radius: inherit;
-    box-shadow: 0 0.25em 1.25em 0 rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0.25em 1.25em 0 rgba(0,0,0,0.25);
     content: '';
     display: block;
     height: calc(100% + 2px);
@@ -829,12 +795,13 @@ p spoiler-text {
 }
 
 #credits span {
-    color: rgba(140, 140, 140, 0.498);
+    color: rgba(140,140,140,0.498);
     margin-top: 1.5rem !important;
     text-transform: lowercase;
 }
 
-@media (max-width: 1920px) {}
+@media (max-width: 1920px) {
+}
 
 @media (max-width: 1680px) {
     html {
@@ -848,7 +815,8 @@ p spoiler-text {
     }
 }
 
-@media (max-width: 1024px) {}
+@media (max-width: 1024px) {
+}
 
 @media (max-width: 980px) {
     html {
@@ -861,19 +829,27 @@ p spoiler-text {
         font-size: 11pt;
     }
 
-    #main>.inner {
+    #main > .inner {
         --padding-horizontal: 2rem;
         --padding-vertical: 3.5rem;
         --spacing: 1.5rem;
     }
 
+    #image01:not(:first-child) {
+        margin-top: 0.5rem !important;
+    }
+
+    #image01:not(:last-child) {
+        margin-bottom: 0.5rem !important;
+    }
+
     #image01 .frame {
-        width: 6.75rem;
+        width: 4.5rem;
     }
 
     .icons.style1 {
-        font-size: 1.125em;
-        gap: 1rem;
+        font-size: 0.75em;
+        gap: 0.625rem;
     }
 
     .icons.style1:not(:first-child) {
@@ -887,18 +863,18 @@ p spoiler-text {
     #text04 {
         letter-spacing: -0.04375rem;
         width: 100%;
-        font-size: 1.375em;
+        font-size: 1.25em;
         line-height: 1;
     }
 
     #text01 {
-        letter-spacing: 0.065625rem;
-        width: calc(100% + 0.065625rem);
-        font-size: 1.375em;
+        letter-spacing: -0.05rem;
+        width: 100%;
+        font-size: 0.875em;
         line-height: 1.125;
     }
 
-    #container02>.wrapper>.inner {
+    #container02 > .wrapper > .inner {
         --gutters: 5rem;
         --padding-horizontal: 2rem;
         --padding-vertical: 0.625rem;
@@ -907,35 +883,35 @@ p spoiler-text {
 }
 
 @media (max-width: 480px) {
-    #main>.inner {
+    #main > .inner {
         --spacing: 1.3125rem;
     }
 
-    #container02>.wrapper>.inner {
+    #container02 > .wrapper > .inner {
         --spacing: 0.109375rem;
     }
 }
 
 @media (max-width: 360px) {
-    #main>.inner {
+    #main > .inner {
         --padding-horizontal: 1.5rem;
         --padding-vertical: 2.625rem;
         --spacing: 1.125rem;
     }
 
     .icons.style1 {
-        gap: 0.75rem;
+        gap: 0.46875rem;
     }
 
     #text04 {
-        font-size: 1.375em;
+        font-size: 1.25em;
     }
 
     #text01 {
-        font-size: 1.375em;
+        font-size: 0.875em;
     }
 
-    #container02>.wrapper>.inner {
+    #container02 > .wrapper > .inner {
         --gutters: 3.75rem;
         --padding-horizontal: 1.5rem;
         --padding-vertical: 0.46875rem;
@@ -943,21 +919,21 @@ p spoiler-text {
     }
 }
 
-body {
-    overflow: auto !important;
-}
+    body {
+        overflow: auto !important;
+    }
 
-body:after {
-    display: none !important;
-}
+    body:after {
+        display: none !important;
+    }
 
-#main>.inner {
-    opacity: 1.0 !important;
-}
+    #main > .inner {
+        opacity: 1.0 !important;
+    }
 
-#main {
-    opacity: 1.0 !important;
-    transform: none !important;
-    transition: none !important;
-    filter: none !important;
-}
+    #main {
+        opacity: 1.0 !important;
+        transform: none !important;
+        transition: none !important;
+        filter: none !important;
+    }
