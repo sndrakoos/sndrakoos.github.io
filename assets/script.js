@@ -876,10 +876,6 @@
 }
 )();
 
-$(document).ready(function(){
-    $("#preloader").hide();
-   });
-
   document.onkeypress = function (event) {
     event = (event || window.event);
     return keyFunction(event);
