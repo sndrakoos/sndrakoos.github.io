@@ -1,0 +1,1045 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,ul {
+    list-style: none;
+}
+
+blockquote,q {
+    quotes: none;
+}
+
+blockquote:before,blockquote:after,q:before,q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+body {
+    -webkit-text-size-adjust: none
+}
+
+mark {
+    background-color: transparent;
+    color: inherit
+}
+
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0
+}
+
+input[type="text"],input[type="email"],select,textarea {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    appearance: none
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+body {
+    line-height: 1.0;
+    min-height: var(--viewport-height);
+    min-width: 320px;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    background-color: #242329;
+}
+
+body:before {
+    background-attachment: scroll;
+    content: '';
+    display: block;
+    height: var(--background-height);
+    left: 0;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    transform: scale(1);
+    width: 100vw;
+    z-index: 0;
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%20width%3D%22512%22%20height%3D%22512%22%20preserveAspectRatio%3D%22none%22%3E%20%3Cstyle%20type%3D%22text%2Fcss%22%3E%20path%20%7B%20fill%3A%20none%3B%20stroke%3A%20rgba(8,8,8,0.102)%3B%20stroke-width%3A%204.01px%3B%20%7D%20%3C%2Fstyle%3E%20%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20d%3D%22M445.6%2C329.9c-0.1-0.1-0.2-0.2-0.2-0.2l0%2C0l-55.2-55.2L236.8%2C121.2L181.6%2C66l0%2C0c-0.1-0.1-0.2-0.2-0.2-0.2%20c-31.9-31.9-83.7-31.9-115.6%2C0c-31.9%2C31.9-31.9%2C83.7%2C0%2C115.6c0.1%2C0.1%2C0.2%2C0.2%2C0.2%2C0.2l0%2C0l55.2%2C55.2l103.3%2C103.3l105.2%2C105.2l0%2C0%20c0.1%2C0.1%2C0.2%2C0.2%2C0.2%2C0.2c31.9%2C31.9%2C83.7%2C31.9%2C115.6%2C0S477.5%2C361.8%2C445.6%2C329.9z%22%2F%3E%3C%2Fsvg%3E');
+    background-size: 6px;
+    background-position: center;
+    background-repeat: repeat;
+}
+
+:root {
+    --background-height: 100vh;
+    --site-language-alignment: left;
+    --site-language-direction: ltr;
+    --site-language-flex-alignment: flex-start;
+    --site-language-indent-left: 1;
+    --site-language-indent-right: 0;
+    --viewport-height: 100vh;
+}
+
+html {
+    font-size: 13pt;
+}
+
+u {
+    text-decoration: underline;
+}
+
+strong {
+    color: inherit;
+    font-weight: bolder;
+}
+
+em {
+    font-style: italic;
+}
+
+code {
+    background-color: rgba(144,144,144,0.25);
+    border-radius: 0.25em;
+    font-family: 'Lucida Console', 'Courier New', monospace;
+    font-size: 0.9em;
+    font-weight: normal;
+    letter-spacing: 0;
+    margin: 0 0.25em;
+    padding: 0.25em 0.5em;
+    text-indent: 0;
+}
+
+mark {
+    background-color: rgba(144,144,144,0.25);
+}
+
+spoiler-text {
+    -webkit-text-stroke: 0;
+    background-color: rgba(32,32,32,0.75);
+    text-shadow: none;
+    text-stroke: 0;
+    color: transparent;
+    cursor: pointer;
+    transition: color 0.1s ease-in-out;
+}
+
+spoiler-text.active {
+    color: #FFFFFF;
+    cursor: text;
+}
+
+s {
+    text-decoration: line-through;
+}
+
+sub {
+    font-size: smaller;
+    vertical-align: sub;
+}
+
+sup {
+    font-size: smaller;
+    vertical-align: super;
+}
+
+a {
+    color: inherit;
+    text-decoration: underline;
+    transition: color 0.25s ease;
+}
+
+a[onclick]:not([href]) {
+    cursor: pointer;
+}
+
+deferred-script {
+    display: none;
+}
+
+#wrapper {
+    -webkit-overflow-scrolling: touch;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: var(--viewport-height);
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    padding: 1rem 1rem 1rem 1rem;
+}
+
+#main {
+    --alignment: center;
+    --flex-alignment: center;
+    --indent-left: 1;
+    --indent-right: 1;
+    --border-radius-tl: 3rem;
+    --border-radius-tr: 3rem;
+    --border-radius-br: 3rem;
+    --border-radius-bl: 3rem;
+    align-items: center;
+    display: flex;
+    flex-grow: 0;
+    flex-shrink: 0;
+    justify-content: center;
+    max-width: 100%;
+    position: relative;
+    text-align: var(--alignment);
+    z-index: 1;
+    background-color: #242329;
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%20width%3D%22512%22%20height%3D%22512%22%20preserveAspectRatio%3D%22none%22%3E%20%3Cstyle%3E%20path%20%7B%20stroke%3A%20rgba(255,255,255,0.2)%3B%20stroke-width%3A%201.01px%3B%20fill%3A%20none%3B%20vector-effect%3A%20non-scaling-stroke%3B%20%7D%20%3C%2Fstyle%3E%20%3Cpath%20d%3D%22m%200%2C0%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20m%20-1024%2C-256%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20m%20-1024%2C-256%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20m%20-1024%2C-256%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20m%20-1024%2C-256%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20m%20-1024%2C1024%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20m%20256%2C1024%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20m%20256%2C1024%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20m%20256%2C1024%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20m%20256%2C1024%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%22%20transform%3D%22translate%28-256%20768%29%22%3E%3Canimate%20attributeName%3D%22d%22%20repeatCount%3D%22indefinite%22%20calcMode%3D%22linear%22%20dur%3D%228500ms%22%20values%3D%22m%200%2C0%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20m%20-1024%2C-256%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20m%20-1024%2C-256%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20m%20-1024%2C-256%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20m%20-1024%2C-256%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20m%20-1024%2C1024%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20m%20256%2C1024%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20m%20256%2C1024%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20m%20256%2C1024%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20m%20256%2C1024%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%3Bm%200%2C0%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20m%20-1041.95%2C-273.95%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20m%20-1006.05%2C-238.05%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20m%20-1041.95%2C-273.95%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20m%20-1006.05%2C-238.05%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20m%20-1024%2C1024%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%20m%20238.05%2C1006.05%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%20m%20273.95%2C1041.95%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%20m%20238.05%2C1006.05%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%20m%20273.95%2C1041.95%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%3Bm%200%2C0%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20m%20-1059.9%2C-291.9%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20m%20-988.1%2C-220.1%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20m%20-1059.9%2C-291.9%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20m%20-988.1%2C-220.1%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20m%20-1024%2C1024%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%20m%20220.1%2C988.1%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%20m%20291.9%2C1059.9%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%20m%20220.1%2C988.1%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%20m%20291.9%2C1059.9%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%3Bm%200%2C0%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20m%20-1077.86%2C-309.86%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20m%20-970.14%2C-202.14%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20m%20-1077.86%2C-309.86%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20m%20-970.14%2C-202.14%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20m%20-1024%2C1024%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%20m%20202.14%2C970.14%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%20m%20309.86%2C1077.86%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%20m%20202.14%2C970.14%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%20m%20309.86%2C1077.86%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%3Bm%200%2C0%20l%20187.18%2C-68.82%20l%20324.82%2C68.82%20l%20187.18%2C-68.82%20l%20324.82%2C68.82%20m%20-1092.82%2C-324.82%20l%20324.82%2C68.82%20l%20187.18%2C-68.82%20l%20324.82%2C68.82%20l%20187.18%2C-68.82%20m%20-955.18%2C-187.18%20l%20187.18%2C-68.82%20l%20324.82%2C68.82%20l%20187.18%2C-68.82%20l%20324.82%2C68.82%20m%20-1092.82%2C-324.82%20l%20324.82%2C68.82%20l%20187.18%2C-68.82%20l%20324.82%2C68.82%20l%20187.18%2C-68.82%20m%20-955.18%2C-187.18%20l%20187.18%2C-68.82%20l%20324.82%2C68.82%20l%20187.18%2C-68.82%20l%20324.82%2C68.82%20m%20-1024%2C1024%20l%20-68.82%2C-324.82%20l%2068.82%2C-187.18%20l%20-68.82%2C-324.82%20l%2068.82%2C-187.18%20m%20187.18%2C955.18%20l%2068.82%2C-187.18%20l%20-68.82%2C-324.82%20l%2068.82%2C-187.18%20l%20-68.82%2C-324.82%20m%20324.82%2C1092.82%20l%20-68.82%2C-324.82%20l%2068.82%2C-187.18%20l%20-68.82%2C-324.82%20l%2068.82%2C-187.18%20m%20187.18%2C955.18%20l%2068.82%2C-187.18%20l%20-68.82%2C-324.82%20l%2068.82%2C-187.18%20l%20-68.82%2C-324.82%20m%20324.82%2C1092.82%20l%20-68.82%2C-324.82%20l%2068.82%2C-187.18%20l%20-68.82%2C-324.82%20l%2068.82%2C-187.18%3Bm%200%2C0%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20m%20-1077.86%2C-309.86%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20m%20-970.14%2C-202.14%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20m%20-1077.86%2C-309.86%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20m%20-970.14%2C-202.14%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20m%20-1024%2C1024%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%20m%20202.14%2C970.14%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%20m%20309.86%2C1077.86%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%20m%20202.14%2C970.14%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%20m%20309.86%2C1077.86%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%3Bm%200%2C0%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20m%20-1059.9%2C-291.9%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20m%20-988.1%2C-220.1%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20m%20-1059.9%2C-291.9%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20m%20-988.1%2C-220.1%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20m%20-1024%2C1024%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%20m%20220.1%2C988.1%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%20m%20291.9%2C1059.9%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%20m%20220.1%2C988.1%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%20m%20291.9%2C1059.9%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%3Bm%200%2C0%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20m%20-1041.95%2C-273.95%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20m%20-1006.05%2C-238.05%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20m%20-1041.95%2C-273.95%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20m%20-1006.05%2C-238.05%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20m%20-1024%2C1024%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%20m%20238.05%2C1006.05%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%20m%20273.95%2C1041.95%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%20m%20238.05%2C1006.05%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%20m%20273.95%2C1041.95%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%3Bm%200%2C0%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20m%20-1024%2C-256%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20m%20-1024%2C-256%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20m%20-1024%2C-256%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20m%20-1024%2C-256%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20m%20-1024%2C1024%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20m%20256%2C1024%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20m%20256%2C1024%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20m%20256%2C1024%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20m%20256%2C1024%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%3Bm%200%2C0%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20m%20-1006.05%2C-238.05%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20m%20-1041.95%2C-273.95%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20m%20-1006.05%2C-238.05%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20m%20-1041.95%2C-273.95%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20m%20-1024%2C1024%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%20m%20273.95%2C1041.95%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%20m%20238.05%2C1006.05%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%20m%20273.95%2C1041.95%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%20m%20238.05%2C1006.05%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%3Bm%200%2C0%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20m%20-988.1%2C-220.1%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20m%20-1059.9%2C-291.9%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20m%20-988.1%2C-220.1%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20m%20-1059.9%2C-291.9%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20m%20-1024%2C1024%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%20m%20291.9%2C1059.9%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%20m%20220.1%2C988.1%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%20m%20291.9%2C1059.9%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%20m%20220.1%2C988.1%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%3Bm%200%2C0%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20m%20-970.14%2C-202.14%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20m%20-1077.86%2C-309.86%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20m%20-970.14%2C-202.14%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20m%20-1077.86%2C-309.86%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20m%20-1024%2C1024%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%20m%20309.86%2C1077.86%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%20m%20202.14%2C970.14%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%20m%20309.86%2C1077.86%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%20m%20202.14%2C970.14%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%3Bm%200%2C0%20l%20324.82%2C68.82%20l%20187.18%2C-68.82%20l%20324.82%2C68.82%20l%20187.18%2C-68.82%20m%20-955.18%2C-187.18%20l%20187.18%2C-68.82%20l%20324.82%2C68.82%20l%20187.18%2C-68.82%20l%20324.82%2C68.82%20m%20-1092.82%2C-324.82%20l%20324.82%2C68.82%20l%20187.18%2C-68.82%20l%20324.82%2C68.82%20l%20187.18%2C-68.82%20m%20-955.18%2C-187.18%20l%20187.18%2C-68.82%20l%20324.82%2C68.82%20l%20187.18%2C-68.82%20l%20324.82%2C68.82%20m%20-1092.82%2C-324.82%20l%20324.82%2C68.82%20l%20187.18%2C-68.82%20l%20324.82%2C68.82%20l%20187.18%2C-68.82%20m%20-1024%2C1024%20l%2068.82%2C-187.18%20l%20-68.82%2C-324.82%20l%2068.82%2C-187.18%20l%20-68.82%2C-324.82%20m%20324.82%2C1092.82%20l%20-68.82%2C-324.82%20l%2068.82%2C-187.18%20l%20-68.82%2C-324.82%20l%2068.82%2C-187.18%20m%20187.18%2C955.18%20l%2068.82%2C-187.18%20l%20-68.82%2C-324.82%20l%2068.82%2C-187.18%20l%20-68.82%2C-324.82%20m%20324.82%2C1092.82%20l%20-68.82%2C-324.82%20l%2068.82%2C-187.18%20l%20-68.82%2C-324.82%20l%2068.82%2C-187.18%20m%20187.18%2C955.18%20l%2068.82%2C-187.18%20l%20-68.82%2C-324.82%20l%2068.82%2C-187.18%20l%20-68.82%2C-324.82%3Bm%200%2C0%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20m%20-970.14%2C-202.14%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20m%20-1077.86%2C-309.86%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20m%20-970.14%2C-202.14%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20m%20-1077.86%2C-309.86%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20l%20309.86%2C53.86%20l%20202.14%2C-53.86%20m%20-1024%2C1024%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%20m%20309.86%2C1077.86%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%20m%20202.14%2C970.14%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%20m%20309.86%2C1077.86%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%20m%20202.14%2C970.14%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%20l%2053.86%2C-202.14%20l%20-53.86%2C-309.86%3Bm%200%2C0%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20m%20-988.1%2C-220.1%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20m%20-1059.9%2C-291.9%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20m%20-988.1%2C-220.1%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20m%20-1059.9%2C-291.9%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20l%20291.9%2C35.9%20l%20220.1%2C-35.9%20m%20-1024%2C1024%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%20m%20291.9%2C1059.9%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%20m%20220.1%2C988.1%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%20m%20291.9%2C1059.9%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%20m%20220.1%2C988.1%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%20l%2035.9%2C-220.1%20l%20-35.9%2C-291.9%3Bm%200%2C0%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20m%20-1006.05%2C-238.05%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20m%20-1041.95%2C-273.95%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20m%20-1006.05%2C-238.05%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20m%20-1041.95%2C-273.95%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20l%20273.95%2C17.95%20l%20238.05%2C-17.95%20m%20-1024%2C1024%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%20m%20273.95%2C1041.95%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%20m%20238.05%2C1006.05%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%20m%20273.95%2C1041.95%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%20m%20238.05%2C1006.05%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%20l%2017.95%2C-238.05%20l%20-17.95%2C-273.95%3Bm%200%2C0%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20m%20-1024%2C-256%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20m%20-1024%2C-256%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20m%20-1024%2C-256%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20m%20-1024%2C-256%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20l%20256%2C0%20m%20-1024%2C1024%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20m%20256%2C1024%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20m%20256%2C1024%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20m%20256%2C1024%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20m%20256%2C1024%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%20l%200%2C-256%22%3E%3C%2Fanimate%3E%3CanimateTransform%20attributeName%3D%22transform%22%20repeatCount%3D%22indefinite%22%20calcMode%3D%22linear%22%20dur%3D%228500ms%22%20type%3D%22translate%22%20values%3D%22-256%20768%3B-233.74%20790.26%3B-211.48%20812.52%3B-189.22%20834.78%3B-170.67%20853.33%3B-189.22%20834.78%3B-211.48%20812.52%3B-233.74%20790.26%3B-256%20768%3B-278.26%20745.74%3B-300.52%20723.48%3B-322.78%20701.22%3B-341.33%20682.67%3B-322.78%20701.22%3B-300.52%20723.48%3B-278.26%20745.74%3B-256%20768%22%3E%3C%2FanimateTransform%3E%3C%2Fpath%3E%3C%2Fsvg%3E');
+    background-size: 676px;
+    background-position: center;
+    background-repeat: repeat;
+    border-radius: var(--border-radius-tl) var(--border-radius-tr) var(--border-radius-br) var(--border-radius-bl);
+    border-top: solid 1px rgba(255,255,255,0.2);
+    border-right: solid 1px rgba(255,255,255,0.2);
+    border-bottom: solid 1px rgba(255,255,255,0.2);
+    border-left: solid 1px rgba(255,255,255,0.2);
+    transition: opacity 1s ease 0s,transform 1s ease 0s;
+}
+
+#main > .inner {
+    --border-radius-tl: calc(3rem - 1px);
+    --border-radius-tr: calc(3rem - 1px);
+    --border-radius-br: calc(3rem - 1px);
+    --border-radius-bl: calc(3rem - 1px);
+    --padding-horizontal: 2rem;
+    --padding-vertical: 2rem;
+    --spacing: 2rem;
+    --width: 43rem;
+    border-radius: var(--border-radius-tl) var(--border-radius-tr) var(--border-radius-br) var(--border-radius-bl);
+    max-width: 100%;
+    position: relative;
+    width: var(--width);
+    z-index: 1;
+    padding: var(--padding-vertical) var(--padding-horizontal);
+}
+
+#main > .inner > * {
+    margin-top: var(--spacing);
+    margin-bottom: var(--spacing);
+}
+
+#main > .inner > :first-child {
+    margin-top: 0 !important;
+}
+
+#main > .inner > :last-child {
+    margin-bottom: 0 !important;
+}
+
+#main > .inner > .full {
+    margin-left: calc(var(--padding-horizontal) * -1);
+    max-width: calc(100% + calc(var(--padding-horizontal) * 2) + 0.4725px);
+    width: calc(100% + calc(var(--padding-horizontal) * 2) + 0.4725px);
+}
+
+#main > .inner > .full:first-child {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    margin-top: calc(var(--padding-vertical) * -1) !important;
+}
+
+#main > .inner > .full:last-child {
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+    margin-bottom: calc(var(--padding-vertical) * -1) !important;
+}
+
+#main > .inner > .full.screen {
+    border-radius: 0 !important;
+    max-width: 100vw;
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    margin-left: -50vw;
+    right: auto;
+}
+
+body.is-loading #main {
+    opacity: 0;
+    transform: translateY(0.6375rem);
+}
+
+body #wrapper:after {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    content: '';
+    display: block;
+    height: 3rem;
+    left: calc(50% - 1.5rem);
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    top: calc(50% - 1.5rem);
+    transition: opacity 1s ease, visibility 1s;
+    visibility: hidden;
+    width: 3rem;
+    z-index: 100000;
+}
+
+body.is-loading {
+    pointer-events: none;
+}
+
+body.is-loading.with-loader #wrapper:after {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iOTZweCIgaGVpZ2h0PSI5NnB4IiB2aWV3Qm94PSIwIDAgOTYgOTYiIHpvb21BbmRQYW49ImRpc2FibGUiPjxzdHlsZT5jaXJjbGUgeyBmaWxsOiB0cmFuc3BhcmVudDsgc3Ryb2tlOiAjQ0Q4MDQ5OyBzdHJva2Utd2lkdGg6IDJweDsgfTwvc3R5bGU+PGRlZnM+PGNsaXBQYXRoIGlkPSJjb3JuZXIiPjxwb2x5Z29uIHBvaW50cz0iMCwwIDQ4LDAgNDgsNDggOTYsNDggOTYsOTYgMCw5NiIgLz48L2NsaXBQYXRoPjwvZGVmcz48ZyBjbGlwLXBhdGg9InVybCgjY29ybmVyKSI+PGNpcmNsZSBjeD0iNDgiIGN5PSI0OCIgcj0iMzIiIHZlY3Rvci1lZmZlY3Q9Im5vbi1zY2FsaW5nLXN0cm9rZSIgLz48YW5pbWF0ZVRyYW5zZm9ybSBhdHRyaWJ1dGVOYW1lPSJ0cmFuc2Zvcm0iIGF0dHJpYnV0ZVR5cGU9IlhNTCIgdHlwZT0icm90YXRlIiBmcm9tPSIwIDQ4IDQ4IiB0bz0iMzYwIDQ4IDQ4IiBkdXI9IjFzIiByZXBlYXREdXI9ImluZGVmaW5pdGUiIC8+PC9nPjwvc3ZnPg==');
+    opacity: 1;
+    transform: scale(1.0);
+    visibility: visible;
+}
+
+body.is-playing.with-loader #wrapper:after {
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.25s ease, transform 0.75s ease, visibility 0.25s;
+    visibility: hidden;
+}
+
+body.is-instant #main, body.is-instant #main > .inner > *,body.is-instant #main > .inner > section > * {
+    transition: none !important;
+}
+
+body.is-instant:after {
+    display: none !important;
+    transition: none !important;
+}
+
+@keyframes loading-spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.deferred:before {
+    content: '';
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -2rem 0 0 -2rem;
+    animation: loading-spinner 1s infinite linear;
+    transition: opacity 0.25s ease;
+    transition-delay: 0.5s;
+    opacity: 0;
+    z-index: -1;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iOTZweCIgaGVpZ2h0PSI5NnB4IiB2aWV3Qm94PSIwIDAgOTYgOTYiIHpvb21BbmRQYW49ImRpc2FibGUiPjxzdHlsZT5jaXJjbGUge2ZpbGw6IHRyYW5zcGFyZW50OyBzdHJva2U6ICNmZmY7IHN0cm9rZS13aWR0aDogMS41cHg7IH08L3N0eWxlPjxkZWZzPjxjbGlwUGF0aCBpZD0iY29ybmVyIj48cG9seWdvbiBwb2ludHM9IjAsMCA0OCwwIDQ4LDQ4IDk2LDQ4IDk2LDk2IDAsOTYiIC8+PC9jbGlwUGF0aD48L2RlZnM+PGcgY2xpcC1wYXRoPSJ1cmwoI2Nvcm5lcikiPjxjaXJjbGUgY3g9IjQ4IiBjeT0iNDgiIHI9IjMyIi8+PC9nPjwvc3ZnPg==');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 3rem;
+}
+
+.deferred.loading:before {
+    opacity: 0.35;
+    z-index: 0;
+}
+
+.image {
+    display: block;
+    line-height: 0;
+    max-width: 100%;
+    position: relative;
+}
+
+.image .frame {
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    vertical-align: top;
+    width: 100%;
+}
+
+.image .frame img {
+    border-radius: 0 !important;
+    max-width: 100%;
+    vertical-align: top;
+    width: inherit;
+}
+
+.image.full .frame {
+    display: block;
+}
+
+.image.full:first-child .frame {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
+.image.full:last-child .frame {
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
+
+#image03 {
+    text-align: center;
+}
+
+#image03:not(:first-child) {
+    margin-top: 0rem !important;
+}
+
+#image03:not(:last-child) {
+    margin-bottom: 0rem !important;
+}
+
+#image03 .frame {
+    width: 6rem;
+    height: 6.75rem;
+    border-radius: 1rem;
+    border-color: rgba(255,255,255,0.141);
+    border-style: solid;
+    border-width: 1px;
+    transition: none;
+}
+
+#image03 .frame img:first-child {
+    border-radius: calc(1rem - 1px) !important;
+}
+
+#image03 img {
+    height: 100% !important;
+    object-fit: cover;
+    object-position: bottom;
+    width: 100% !important;
+    border-radius: inherit !important;
+    padding: 0.25rem;
+}
+
+#image03 .frame img {
+    transition: none;
+}
+
+h1, h2, h3, p {
+    direction: var(--site-language-direction);
+    position: relative;
+}
+
+h1 span.p, h2 span.p, h3 span.p, p span.p {
+    display: block;
+    position: relative;
+}
+
+h1 span[style], h2 span[style], h3 span[style], p span[style], h1 strong, h2 strong, h3 strong, p strong, h1 a, h2 a, h3 a, p a, h1 code, h2 code, h3 code, p code, h1 mark, h2 mark, h3 mark, p mark, h1 spoiler-text, h2 spoiler-text, h3 spoiler-text, p spoiler-text {
+    -webkit-text-fill-color: currentcolor;
+}
+
+#text24:not(:first-child) {
+    margin-top: 0rem !important;
+}
+
+#text24:not(:last-child) {
+    margin-bottom: 0rem !important;
+}
+
+#text24 {
+    text-align: center;
+    text-transform: uppercase;
+    color: #F25600;
+    font-family: 'Martian Mono', monospace;
+    letter-spacing: 0.15rem;
+    width: calc(100% + 0.15rem);
+    font-size: 1em;
+    line-height: 1.875;
+    font-weight: 300;
+    background-image: linear-gradient(142deg, #FFC908 0%, #F25600 43%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#text24 mark {
+    color: #FFFFFF;
+    background-color: transparent;
+}
+
+#text24 a:hover {
+    color: #EB8852;
+}
+
+#text24 a {
+    text-decoration: none;
+}
+
+#text24 span.p:nth-child(n + 2) {
+    margin-top: 1rem;
+    -webkit-text-fill-color: currentcolor;
+}
+
+#text24 span.p {
+    background-image: linear-gradient(142deg, #FFC908 0%, #F25600 43%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent !important;
+}
+
+#text37 {
+    color: rgba(255,255,255,0.612);
+    font-family: 'Martian Mono', monospace;
+    font-size: 1em;
+    line-height: 2;
+    font-weight: 200;
+}
+
+#text37 mark {
+    color: #FFFFFF;
+    background-color: transparent;
+}
+
+#text37 a:hover {
+    color: #EB8852;
+}
+
+#text37 a {
+    text-decoration: none;
+}
+
+#text37 span.p:nth-child(n + 2) {
+    margin-top: 1rem;
+}
+
+.container {
+    position: relative;
+}
+
+.container > .wrapper {
+    vertical-align: top;
+    position: relative;
+    max-width: 100%;
+    border-radius: inherit;
+}
+
+.container > .wrapper > .inner {
+    vertical-align: top;
+    position: relative;
+    max-width: 100%;
+    border-radius: inherit;
+    text-align: var(--alignment);
+}
+
+#main .container.full:first-child > .wrapper {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
+#main .container.full:last-child > .wrapper {
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
+
+#main .container.full:first-child > .wrapper > .inner {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
+#main .container.full:last-child > .wrapper > .inner {
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
+
+#container01 {
+    --alignment: left;
+    --flex-alignment: flex-start;
+    --indent-left: 1;
+    --indent-right: 0;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: #28272E;
+    border-color: rgba(255,255,255,0.2);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 2.25rem;
+}
+
+#container01 > .wrapper > .inner {
+    --gutters: 3.5rem;
+    --padding-horizontal: 4rem;
+    --padding-vertical: 4rem;
+    --spacing: 1rem;
+    padding: var(--padding-vertical) var(--padding-horizontal);
+    border-radius: calc(2.25rem - 1px);
+}
+
+#container01 > .wrapper {
+    max-width: var(--width);
+    width: 100%;
+}
+
+#container01.default > .wrapper > .inner > * {
+    margin-bottom: var(--spacing);
+    margin-top: var(--spacing);
+}
+
+#container01.default > .wrapper > .inner > *:first-child {
+    margin-top: 0 !important;
+}
+
+#container01.default > .wrapper > .inner > *:last-child {
+    margin-bottom: 0 !important;
+}
+
+#container01.columns > .wrapper > .inner {
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+}
+
+#container01.columns > .wrapper > .inner > * {
+    flex-grow: 0;
+    flex-shrink: 0;
+    max-width: 100%;
+    text-align: var(--alignment);
+    padding: 0 0 0 var(--gutters);
+}
+
+#container01.columns > .wrapper > .inner > * > * {
+    margin-bottom: var(--spacing);
+    margin-top: var(--spacing);
+}
+
+#container01.columns > .wrapper > .inner > * > *:first-child {
+    margin-top: 0 !important;
+}
+
+#container01.columns > .wrapper > .inner > * > *:last-child {
+    margin-bottom: 0 !important;
+}
+
+#container01.columns > .wrapper > .inner > *:first-child {
+    margin-left: calc(var(--gutters) * -1);
+}
+
+#container01.default > .wrapper > .inner > .full {
+    margin-left: calc(var(--padding-horizontal) * -1);
+    max-width: none !important;
+    width: calc(100% + (var(--padding-horizontal) * 2) + 0.4725px);
+}
+
+#container01.default > .wrapper > .inner > .full:first-child {
+    margin-top: calc(var(--padding-vertical) * -1) !important;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
+#container01.default > .wrapper > .inner > .full:last-child {
+    margin-bottom: calc(var(--padding-vertical) * -1) !important;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
+
+#container01.columns > .wrapper > .inner > div > .full {
+    margin-left: calc(var(--gutters) * -0.5);
+    max-width: none !important;
+    width: calc(100% + var(--gutters) + 0.4725px);
+}
+
+#container01.columns > .wrapper > .inner > div:first-child > .full {
+    margin-left: calc(var(--padding-horizontal) * -1);
+    width: calc(100% + var(--padding-horizontal) + calc(var(--gutters) * 0.5) + 0.4725px);
+}
+
+#container01.columns > .wrapper > .inner > div:last-child > .full {
+    width: calc(100% + var(--padding-horizontal) + calc(var(--gutters) * 0.5) + 0.4725px);
+}
+
+#container01.columns > .wrapper > .inner > div > .full:first-child {
+    margin-top: calc(var(--padding-vertical) * -1) !important;
+}
+
+#container01.columns > .wrapper > .inner > div > .full:last-child {
+    margin-bottom: calc(var(--padding-vertical) * -1) !important;
+}
+
+#container01.columns > .wrapper > .inner > .full {
+    align-self: stretch;
+}
+
+#container01.columns > .wrapper > .inner > .full:first-child {
+    border-bottom-left-radius: inherit;
+    border-top-left-radius: inherit;
+}
+
+#container01.columns > .wrapper > .inner > .full:last-child {
+    border-bottom-right-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
+#container01.columns > .wrapper > .inner > .full > .full:first-child:last-child {
+    border-radius: inherit;
+    height: calc(100% + (var(--padding-vertical) * 2));
+}
+
+#container01.columns > .wrapper > .inner > .full > .full:first-child:last-child > * {
+    border-radius: inherit;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+#container01 > .wrapper > .inner > :nth-child(1) {
+    width: calc(30% + (var(--gutters) / 2));
+}
+
+#container01 > .wrapper > .inner > :nth-child(2) {
+    width: calc(70% + (var(--gutters) / 2));
+}
+
+.icc-credits {
+    display: block;
+    opacity: 1 !important;
+    position: relative;
+    transition-delay: 0s !important;
+}
+
+.icc-credits span {
+    border-radius: 24px;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 1;
+    position: relative;
+    text-decoration: none;
+    width: auto;
+}
+
+.icc-credits span a {
+    display: inline-block;
+    padding: 0.5em 0.375em;
+    position: relative;
+    text-decoration: none;
+    transition: color 0.25s ease, transform 0.25s ease;
+    z-index: 1;
+}
+
+.icc-credits span a:before {
+    content: '( ';
+    opacity: 1;
+    transition: opacity 0.25s ease;
+}
+
+.icc-credits span a:after {
+    content: ' )';
+    opacity: 1;
+    transition: opacity 0.25s ease;
+}
+
+.icc-credits span::after {
+    background-image: linear-gradient(30deg, #A464A1 15%, #3B5DAD 85%);
+    border-radius: inherit;
+    box-shadow: 0 0.25em 1.25em 0 rgba(0,0,0,0.25);
+    content: '';
+    display: block;
+    height: calc(100% + 2px);
+    left: -1px;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: -1px;
+    transition: opacity 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+    width: calc(100% + 2px);
+}
+
+.icc-credits span:hover {
+    text-transform: none !important;
+}
+
+.icc-credits span:hover a {
+    color: #ffffff !important;
+    transform: scale(1.1) translateY(-0.05rem);
+}
+
+.icc-credits span:hover a:before {
+    opacity: 0;
+}
+
+.icc-credits span:hover a:after {
+    opacity: 0;
+}
+
+.icc-credits span:hover::after {
+    opacity: 1;
+    transform: scale(1.1) translateY(-0.05rem);
+}
+
+#credits span {
+    color: rgba(161,159,173,0.498);
+    margin-top: 1.5rem !important;
+}
+
+@media (max-width: 1920px) {
+}
+
+@media (max-width: 1680px) {
+    html {
+        font-size: 9pt;
+    }
+}
+
+@media (max-width: 1280px) {
+    html {
+        font-size: 9pt;
+    }
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 980px) {
+    html {
+        font-size: 8pt;
+    }
+}
+
+@media (max-width: 736px) {
+    html {
+        font-size: 10pt;
+    }
+
+    #wrapper {
+        padding: 2rem 2rem 2rem 2rem;
+    }
+
+    #main > .inner {
+        --padding-horizontal: 1rem;
+        --padding-vertical: 1rem;
+        --spacing: 2rem;
+    }
+
+    #image03:not(:first-child) {
+        margin-top: 0rem !important;
+    }
+
+    #image03:not(:last-child) {
+        margin-bottom: 0rem !important;
+    }
+
+    #image03 .frame {
+        width: 6rem;
+        height: 8.4375rem !important;
+    }
+
+    #image03 img {
+        height: 100% !important;
+        object-fit: cover;
+        object-position: bottom;
+        width: 100% !important;
+    }
+
+    #text24:not(:first-child) {
+        margin-top: 0rem !important;
+    }
+
+    #text24:not(:last-child) {
+        margin-bottom: 0rem !important;
+    }
+
+    #text24 {
+        letter-spacing: 0.13125rem;
+        width: calc(100% + 0.13125rem);
+        font-size: 0.875em;
+        line-height: 1.875;
+    }
+
+    #text37 {
+        text-indent: 0.5rem;
+        letter-spacing: -0.05rem;
+        width: 100%;
+        font-size: 0.875em;
+        line-height: 1.75;
+    }
+
+    #container01 > .wrapper > .inner {
+        --gutters: 3.5rem;
+        --padding-horizontal: 2.5rem;
+        --padding-vertical: 2.5rem;
+        --spacing: 1rem;
+    }
+
+    #container01.columns > .wrapper > .inner {
+        flex-direction: column !important;
+        flex-wrap: nowrap !important;
+    }
+
+    #container01.columns > .wrapper > .inner > span {
+        height: 0;
+        margin-top: calc(var(--gutters) * -1);
+        pointer-events: none;
+        visibility: hidden;
+    }
+
+    #container01.columns > .wrapper > .inner > *:first-child {
+        margin-left: 0 !important;
+        padding-top: 0 !important;
+    }
+
+    #container01.columns > .wrapper > .inner > * {
+        padding: calc(var(--gutters) * 0.5) 0 !important;
+    }
+
+    #container01.columns > .wrapper > .inner > *:last-child {
+        padding-bottom: 0 !important;
+    }
+
+    #container01.columns > .wrapper > .inner > div > .full {
+        margin-left: calc(var(--padding-horizontal) * -1);
+        width: calc(100% + (var(--padding-horizontal) * 2) + 0.4725px);
+    }
+
+    #container01.columns > .wrapper > .inner > div:first-of-type > .full {
+        margin-left: calc(var(--padding-horizontal) * -1);
+        width: calc(100% + (var(--padding-horizontal) * 2) + 0.4725px);
+    }
+
+    #container01.columns > .wrapper > .inner > div:last-of-type > .full {
+        margin-left: calc(var(--padding-horizontal) * -1);
+        width: calc(100% + (var(--padding-horizontal) * 2) + 0.4725px);
+    }
+
+    #container01.columns > .wrapper > .inner > div > .full:first-child {
+        margin-top: calc(var(--gutters) * -0.5) !important;
+    }
+
+    #container01.columns > .wrapper > .inner > div > .full:last-child {
+        margin-bottom: calc(var(--gutters) * -0.5) !important;
+    }
+
+    #container01.columns > .wrapper > .inner > div:first-of-type > .full:first-child {
+        margin-top: calc(var(--padding-vertical) * -1) !important;
+    }
+
+    #container01.columns > .wrapper > .inner > div:last-of-type > .full:last-child {
+        margin-bottom: calc(var(--padding-vertical) * -1) !important;
+    }
+
+    #container01.columns > .wrapper > .inner > div:first-of-type, #container01.columns > .wrapper > .inner > div:first-of-type > .full:first-child {
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+    }
+
+    #container01.columns > .wrapper > .inner > div:last-of-type, #container01.columns > .wrapper > .inner > div:last-of-type > .full:last-child {
+        border-bottom-left-radius: inherit;
+        border-bottom-right-radius: inherit;
+    }
+
+    #container01.columns > .wrapper > .inner > div:first-of-type, #container01.columns > .wrapper > .inner > div:first-of-type > .full:last-child {
+        border-bottom-left-radius: 0 !important;
+    }
+
+    #container01.columns > .wrapper > .inner > div:last-of-type, #container01.columns > .wrapper > .inner > div:last-of-type > .full:first-child {
+        border-top-right-radius: 0 !important;
+    }
+
+    #container01.columns > .wrapper > .inner > .full > .full:first-child:last-child {
+        height: auto;
+    }
+
+    #container01.columns > .wrapper > .inner > .full > .full:first-child:last-child > * {
+        height: auto;
+        position: relative;
+        width: auto;
+    }
+
+    #container01 > .wrapper > .inner > :nth-child(1) {
+        min-height: 100% !important;
+        width: 100% !important;
+    }
+
+    #container01 > .wrapper > .inner > :nth-child(2) {
+        min-height: 100% !important;
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #wrapper {
+        padding: 1rem 1rem 1rem 1rem;
+    }
+
+    #main > .inner {
+        --spacing: 1.75rem;
+    }
+
+    #image03 .frame {
+        height: 6.75rem !important;
+    }
+
+    #container01 > .wrapper > .inner {
+        --spacing: 0.875rem;
+    }
+}
+
+@media (max-width: 360px) {
+    #wrapper {
+        padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    }
+
+    #main > .inner {
+        --padding-horizontal: 0.75rem;
+        --padding-vertical: 0.75rem;
+        --spacing: 1.5rem;
+    }
+
+    #image03 .frame {
+        height: 5.90625rem !important;
+    }
+
+    #text24 {
+        font-size: 0.875em;
+    }
+
+    #text37 {
+        font-size: 0.875em;
+    }
+
+    #container01 > .wrapper > .inner {
+        --gutters: 2.625rem;
+        --padding-horizontal: 1.875rem;
+        --padding-vertical: 1.875rem;
+        --spacing: 0.75rem;
+    }
+}
+
+    body {
+        overflow: auto !important;
+    }
+
+    #main {
+        opacity: 1.0 !important;
+        transform: none !important;
+        transition: none !important;
+        filter: none !important;
+    }
+
+    #main > .inner > section {
+        opacity: 1.0 !important;
+        transform: none !important;
+        transition: none !important;
+        filter: none !important;
+    }
