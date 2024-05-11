@@ -191,6 +191,16 @@
         default:
             break;
         }
+        a = parent.querySelectorAll('deferred-script');
+        for (i = 0; i < a.length; i++) {
+            x = document.createElement('script');
+            x.setAttribute('data-deferred', '');
+            if (a[i].getAttribute('src'))
+                x.setAttribute('src', a[i].getAttribute('src'));
+            if (a[i].textContent)
+                x.textContent = a[i].textContent;
+            a[i].replaceWith(x);
+        }
     }
       , unloadElements = function(parent) {
         var a, e, x, i;
@@ -685,6 +695,96 @@
                     this.style.filter = 'none';
                 },
             },
+            'wipe-up': {
+                transition: function(speed, delay) {
+                    return 'mask-size ' + speed + 's ease' + (delay ? ' ' + delay + 's' : '');
+                },
+                rewind: function(intensity) {
+                    this.style.maskComposite = 'exclude';
+                    this.style.maskRepeat = 'no-repeat';
+                    this.style.maskImage = 'linear-gradient(0deg, black 100%, transparent 100%)';
+                    this.style.maskPosition = '0% 100%';
+                    this.style.maskSize = '100% 0%';
+                },
+                play: function() {
+                    this.style.maskSize = '110% 110%';
+                },
+            },
+            'wipe-down': {
+                transition: function(speed, delay) {
+                    return 'mask-size ' + speed + 's ease' + (delay ? ' ' + delay + 's' : '');
+                },
+                rewind: function(intensity) {
+                    this.style.maskComposite = 'exclude';
+                    this.style.maskRepeat = 'no-repeat';
+                    this.style.maskImage = 'linear-gradient(0deg, black 100%, transparent 100%)';
+                    this.style.maskPosition = '0% 0%';
+                    this.style.maskSize = '100% 0%';
+                },
+                play: function() {
+                    this.style.maskSize = '110% 110%';
+                },
+            },
+            'wipe-left': {
+                transition: function(speed, delay) {
+                    return 'mask-size ' + speed + 's ease' + (delay ? ' ' + delay + 's' : '');
+                },
+                rewind: function(intensity) {
+                    this.style.maskComposite = 'exclude';
+                    this.style.maskRepeat = 'no-repeat';
+                    this.style.maskImage = 'linear-gradient(90deg, black 100%, transparent 100%)';
+                    this.style.maskPosition = '100% 0%';
+                    this.style.maskSize = '0% 100%';
+                },
+                play: function() {
+                    this.style.maskSize = '110% 110%';
+                },
+            },
+            'wipe-right': {
+                transition: function(speed, delay) {
+                    return 'mask-size ' + speed + 's ease' + (delay ? ' ' + delay + 's' : '');
+                },
+                rewind: function(intensity) {
+                    this.style.maskComposite = 'exclude';
+                    this.style.maskRepeat = 'no-repeat';
+                    this.style.maskImage = 'linear-gradient(90deg, black 100%, transparent 100%)';
+                    this.style.maskPosition = '0% 0%';
+                    this.style.maskSize = '0% 100%';
+                },
+                play: function() {
+                    this.style.maskSize = '110% 110%';
+                },
+            },
+            'wipe-diagonal': {
+                transition: function(speed, delay) {
+                    return 'mask-size ' + speed + 's ease' + (delay ? ' ' + delay + 's' : '');
+                },
+                rewind: function(intensity) {
+                    this.style.maskComposite = 'exclude';
+                    this.style.maskRepeat = 'no-repeat';
+                    this.style.maskImage = 'linear-gradient(45deg, black 50%, transparent 50%)';
+                    this.style.maskPosition = '0% 100%';
+                    this.style.maskSize = '0% 0%';
+                },
+                play: function() {
+                    this.style.maskSize = '220% 220%';
+                },
+            },
+            'wipe-reverse-diagonal': {
+                transition: function(speed, delay) {
+                    return 'mask-size ' + speed + 's ease' + (delay ? ' ' + delay + 's' : '');
+                },
+                rewind: function(intensity) {
+                    this.style.maskComposite = 'exclude';
+                    this.style.maskRepeat = 'no-repeat';
+                    this.style.maskImage = 'linear-gradient(135deg, transparent 50%, black 50%)';
+                    this.style.maskPosition = '100% 100%';
+                    this.style.maskSize = '0% 0%';
+                },
+                play: function() {
+                    this.style.maskSize = '220% 220%';
+                },
+            },
         },
         regex: new RegExp('([a-zA-Z0-9\.\,\-\_\"\'\?\!\:\;\#\@\#$\%\&\(\)\{\}]+)','g'),
         add: function(selector, settings) {
@@ -831,52 +931,42 @@
             }
         },
     };
-    onvisible.add('.icons.style1', {
-        style: 'fade-up',
+    onvisible.add('#image03', {
+        style: 'blur-in',
+        speed: 1500,
+        intensity: 1,
+        threshold: 3,
+        delay: 125,
+        replay: false
+    });
+    onvisible.add('#text24', {
+        style: 'fade-right',
+        speed: 1500,
+        intensity: 1,
+        threshold: 3,
+        delay: 125,
+        replay: false
+    });
+    onvisible.add('#text37', {
+        style: 'fade-left',
         speed: 1000,
-        intensity: 3,
-        threshold: 3,
-        delay: 0,
-        stagger: 250,
-        staggerSelector: ':scope > li',
-        replay: false
-    });
-    onvisible.add('#text04', {
-        style: 'fade-up',
-        speed: 750,
-        intensity: 2,
+        intensity: 1,
         threshold: 3,
         delay: 0,
         replay: false
     });
-    onvisible.add('#text01', {
-        style: 'fade-up',
-        speed: 750,
-        intensity: 2,
-        threshold: 3,
-        delay: 0,
-        replay: false
-    });
-    onvisible.add('#container02', {
+    onvisible.add('#icons01', {
         style: 'blur-in',
         speed: 1000,
         intensity: 5,
         threshold: 3,
         delay: 0,
-        replay: true
-    });
-    onvisible.add('#container02 > .wrapper > .inner', {
-        style: 'fade-in',
-        speed: 1250,
-        intensity: 5,
-        threshold: 3,
-        delay: 0,
-        replay: true
+        replay: false
     });
 }
 )();
 
-  document.onkeypress = function (event) {
+document.onkeypress = function (event) {
     event = (event || window.event);
     return keyFunction(event);
     }
